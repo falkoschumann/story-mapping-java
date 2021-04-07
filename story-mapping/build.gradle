@@ -1,0 +1,8 @@
+plugins {
+  id 'story-mapping.java-application-conventions'
+}
+
+dependencies {
+  implementation project(':story-mapping-backend')
+  implementation project(':story-mapping-frontend')
+}

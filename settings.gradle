@@ -1,0 +1,6 @@
+rootProject.name = 'story-mapping-root'
+
+include 'story-mapping'
+include 'story-mapping-contract'
+include 'story-mapping-backend'
+include 'story-mapping-frontend'

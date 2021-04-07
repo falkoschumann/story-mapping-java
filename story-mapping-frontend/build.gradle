@@ -1,0 +1,8 @@
+plugins {
+  id 'story-mapping.java-library-conventions'
+  id 'story-mapping.java-openjfx-conventions'
+}
+
+dependencies {
+  api project(':story-mapping-contract')
+}

@@ -1,0 +1,5 @@
+/*
+ * Story Mapping - Frontend
+ * Copyright (c) $YEAR Falko Schumann <falko.schumann@muspellheim.de>
+ */
+

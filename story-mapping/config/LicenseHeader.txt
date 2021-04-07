@@ -1,0 +1,5 @@
+/*
+ * Story Mapping - App
+ * Copyright (c) $YEAR Falko Schumann <falko.schumann@muspellheim.de>
+ */
+

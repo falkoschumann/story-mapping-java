@@ -1,0 +1,4 @@
+plugins {
+  id 'story-mapping.java-common-conventions'
+  id 'application'
+}

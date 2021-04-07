@@ -1,0 +1,3 @@
+plugins {
+  id 'story-mapping.java-library-conventions'
+}
