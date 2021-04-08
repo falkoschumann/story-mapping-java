@@ -6,3 +6,9 @@ dependencies {
   implementation project(':story-mapping-backend')
   implementation project(':story-mapping-frontend')
 }
+
+application {
+  mainModule = 'de.muspellheim.storymapping'
+  mainClassName = 'de.muspellheim.storymapping.App'
+  applicationDefaultJvmArgs = ['--enable-preview']
+}
