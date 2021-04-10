@@ -11,7 +11,6 @@ organisiere die Implementierung.
 
 ## Contributing
 
-
 - Der Code Style [Google Java Style Guide][1] wird beim Build geprüft.
 - Code formatieren: `./gradlew spotlessApply`
 - Release erstellen: `./gradlew jpackage`

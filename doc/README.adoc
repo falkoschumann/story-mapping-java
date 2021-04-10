@@ -1,7 +1,24 @@
 = Story Mapping
 :toc:
 
-== Erstelle Story Map
+== Architektur
+
+=== System Context
+
+.System Context Story Mapping
+image::assets/System-Context-Story-Mapping.png[]
+
+=== Containers of Story Mapping
+
+.Container Story Mapping
+image::assets/Container-Story-Mapping.png[]
+
+=== Components of Story Mapping Application
+
+.Component Story Mapping Application
+image::assets/Component-Story-Mapping-Application.png[]
+
+== User Stories
 
 === Umreise die Projektziele
 
