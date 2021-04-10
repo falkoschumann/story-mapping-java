@@ -1,3 +1,7 @@
+import org.apache.tools.ant.taskdefs.condition.Os
+
+import java.time.LocalDate
+
 plugins {
   id 'story-mapping.java-application-conventions'
 }
@@ -11,4 +15,43 @@ application {
   mainModule = 'de.muspellheim.storymapping'
   mainClassName = 'de.muspellheim.storymapping.App'
   applicationDefaultJvmArgs = ['--enable-preview']
+}
+
+def year = LocalDate.now().year
+
+if (Os.isFamily(Os.FAMILY_MAC)) {
+  jlink {
+    jpackage {
+      //icon = 'src/main/macos/AppIcon.icns'
+      imageName = 'Story Maping'
+      installerType = 'dmg'
+      imageOptions = [
+        '--copyright', "Copyright (c) ${year} Falko Schumann",
+        '--mac-sign',
+        '--mac-signing-key-user-name', project.findProperty('macSigning.keyUserName')
+      ]
+    }
+  }
+}
+
+if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+  jlink {
+    jpackage {
+      //icon = 'src/main/win/app.ico'
+      imageName = 'Story Mapping'
+      imageOptions = [
+        '--copyright', "Copyright (c) ${year} Falko Schumann",
+      ]
+      installerName = 'Story Mapping'
+      installerType = 'msi'
+      installerOptions = [
+        '--copyright', "Copyright (c) ${year} Falko Schumann",
+        '--license-file', '../LICENSE.txt',
+        '--win-dir-chooser',
+        '--win-menu',
+        '--win-menu-group', 'Muspellheim',
+        '--win-upgrade-uuid', 'cce3747c-06dc-466c-8c49-4aebe528da61'
+      ]
+    }
+  }
 }
