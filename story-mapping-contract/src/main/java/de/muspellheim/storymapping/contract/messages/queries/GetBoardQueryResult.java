@@ -5,6 +5,6 @@
 
 package de.muspellheim.storymapping.contract.messages.queries;
 
-import de.muspellheim.storymapping.contract.data.Card;
+import de.muspellheim.storymapping.contract.data.Board;
 
-public record GetBoardQueryResult(Card vision) {}
+public record GetBoardQueryResult(Board board) {}
