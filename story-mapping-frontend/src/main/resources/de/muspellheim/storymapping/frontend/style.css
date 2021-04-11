@@ -1,0 +1,53 @@
+.root {
+  -fx-font-family: Verdana;
+  -fx-font-size: 14px;
+  -fx-text-fill: #2e3032; /* RAL 9004 Signalschwarz */
+}
+
+.card {
+  -fx-pref-width: 180px;
+  -fx-pref-height: 120px;
+  -fx-effect: dropshadow(gaussian, gray, 5, 0.25, 2, 2);
+}
+
+.card.goal {
+  -fx-background-color: lightskyblue;
+}
+
+.card.activity {
+  -fx-background-color: lightgreen;
+}
+
+.card.user-story {
+  -fx-background-color: lightgoldenrodyellow;
+}
+
+.card.pain {
+  -fx-background-color: lightcoral;
+}
+
+.card .title {
+  -fx-text-alignment: center;
+  -fx-wrap-text: true;
+}
+
+.state.ready {
+  -fx-pref-width: 16px;
+  -fx-pref-height: 16px;
+  -fx-background-radius: 8px;
+  -fx-background-color: orangered;
+}
+
+.state.in-progress {
+  -fx-pref-width: 16px;
+  -fx-pref-height: 16px;
+  -fx-background-radius: 8px;
+  -fx-background-color: gold;
+}
+
+.state.done {
+  -fx-pref-width: 16px;
+  -fx-pref-height: 16px;
+  -fx-background-radius: 8px;
+  -fx-background-color: yellowgreen;
+}

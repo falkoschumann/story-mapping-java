@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<GridPane hgap="12.0" stylesheets="@style.css" vgap="12.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" />
+      <ColumnConstraints hgrow="SOMETIMES" />
+      <ColumnConstraints hgrow="SOMETIMES" />
+      <ColumnConstraints hgrow="SOMETIMES" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints vgrow="SOMETIMES" />
+      <RowConstraints vgrow="SOMETIMES" />
+      <RowConstraints vgrow="SOMETIMES" />
+      <RowConstraints vgrow="SOMETIMES" />
+   </rowConstraints>
+   <children>
+     <AnchorPane GridPane.columnIndex="0" GridPane.rowIndex="0">
+       <children>
+         <Label styleClass="title" text="Describe a user goal" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="12.0" />
+       </children>
+       <styleClass>
+         <String fx:value="card" />
+         <String fx:value="goal" />
+       </styleClass>
+     </AnchorPane>
+     <AnchorPane GridPane.rowIndex="1">
+       <children>
+         <Label styleClass="title" text="Describe a user activity" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="12.0" />
+       </children>
+         <styleClass>
+            <String fx:value="card" />
+            <String fx:value="activity" />
+         </styleClass>
+     </AnchorPane>
+      <AnchorPane GridPane.rowIndex="2">
+         <children>
+            <Label styleClass="title" text="Create a ready user story" AnchorPane.bottomAnchor="24.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="12.0" />
+            <Region AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="4.0">
+               <styleClass>
+                  <String fx:value="state" />
+                  <String fx:value="ready" />
+               </styleClass></Region>
+         </children>
+         <styleClass>
+            <String fx:value="card" />
+            <String fx:value="user-story" />
+         </styleClass>
+      </AnchorPane>
+      <AnchorPane GridPane.columnIndex="1" GridPane.rowIndex="2">
+         <children>
+            <Label styleClass="title" text="Create an in progress user story" AnchorPane.bottomAnchor="24.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="12.0" />
+            <Region AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="4.0">
+               <styleClass>
+                  <String fx:value="state" />
+                  <String fx:value="in-progress" />
+               </styleClass></Region>
+         </children>
+         <styleClass>
+            <String fx:value="card" />
+            <String fx:value="user-story" />
+         </styleClass>
+      </AnchorPane>
+      <AnchorPane GridPane.columnIndex="2" GridPane.rowIndex="2">
+         <children>
+            <Label styleClass="title" text="Create a done user story" AnchorPane.bottomAnchor="24.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="12.0" />
+            <Region AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="4.0">
+               <styleClass>
+                  <String fx:value="state" />
+                  <String fx:value="done" />
+               </styleClass></Region>
+         </children>
+         <styleClass>
+            <String fx:value="card" />
+            <String fx:value="user-story" />
+         </styleClass>
+      </AnchorPane>
+     <AnchorPane GridPane.columnIndex="0" GridPane.rowIndex="3">
+       <children>
+         <Label styleClass="title" text="Create a ready pain" AnchorPane.bottomAnchor="24.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="12.0" />
+         <Region AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="4.0">
+           <styleClass>
+             <String fx:value="state" />
+             <String fx:value="ready" />
+           </styleClass></Region>
+       </children>
+       <styleClass>
+         <String fx:value="card" />
+         <String fx:value="pain" />
+       </styleClass>
+     </AnchorPane>
+     <AnchorPane GridPane.columnIndex="1" GridPane.rowIndex="3">
+       <children>
+         <Label styleClass="title" text="Create an in progress pain" AnchorPane.bottomAnchor="24.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="12.0" />
+         <Region AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="4.0">
+           <styleClass>
+             <String fx:value="state" />
+             <String fx:value="in-progress" />
+           </styleClass></Region>
+       </children>
+       <styleClass>
+         <String fx:value="card" />
+         <String fx:value="pain" />
+       </styleClass>
+     </AnchorPane>
+     <AnchorPane GridPane.columnIndex="2" GridPane.rowIndex="3">
+       <children>
+         <Label styleClass="title" text="Create a done pain" AnchorPane.bottomAnchor="24.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="12.0" />
+         <Region AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="4.0">
+           <styleClass>
+             <String fx:value="state" />
+             <String fx:value="done" />
+           </styleClass></Region>
+       </children>
+       <styleClass>
+         <String fx:value="card" />
+         <String fx:value="pain" />
+       </styleClass>
+     </AnchorPane>
+   </children>
+   <padding>
+      <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+   </padding>
+</GridPane>

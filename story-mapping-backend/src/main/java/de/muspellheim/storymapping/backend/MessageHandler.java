@@ -14,6 +14,6 @@ import de.muspellheim.storymapping.contract.messages.queries.GetBoardQueryResult
 public class MessageHandler implements MessageHandling {
   @Override
   public GetBoardQueryResult handle(GetBoardQuery query) {
-    return new GetBoardQueryResult(new Board(new Card("Lorem ipsum")));
+    return new GetBoardQueryResult(new Board(new Card("1", "Lorem ipsum")));
   }
 }

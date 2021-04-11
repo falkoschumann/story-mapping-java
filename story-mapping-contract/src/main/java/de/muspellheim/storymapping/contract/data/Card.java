@@ -5,4 +5,4 @@
 
 package de.muspellheim.storymapping.contract.data;
 
-public record Card(String title) {}
+public record Card(String id, String title) {}
