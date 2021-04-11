@@ -14,7 +14,6 @@ dependencies {
 application {
   mainModule = 'de.muspellheim.storymapping'
   mainClassName = 'de.muspellheim.storymapping.App'
-  applicationDefaultJvmArgs = ['--enable-preview']
 }
 
 def year = LocalDate.now().year
