@@ -5,6 +5,10 @@
 
 package de.muspellheim.storymapping.contract.data;
 
-import java.util.List;
-
-public record Board(List<Card> cards) {}
+public enum State {
+  OPEN,
+  READY,
+  IN_PROGRESS,
+  DONE,
+  CLOSED
+}

@@ -5,4 +5,8 @@
 
 package de.muspellheim.storymapping.contract.data;
 
-public record Card(String id, String title) {}
+public interface Card {
+  String id();
+
+  String title();
+}

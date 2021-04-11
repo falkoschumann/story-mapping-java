@@ -7,4 +7,8 @@ package de.muspellheim.storymapping.contract.data;
 
 import java.util.List;
 
-public record Board(List<Card> cards) {}
+public record GoalCard(String id, String title, List<ActivityCard> activities) implements Card {
+  public GoalCard(String id, String title) {
+    this(id, title, List.of());
+  }
+}

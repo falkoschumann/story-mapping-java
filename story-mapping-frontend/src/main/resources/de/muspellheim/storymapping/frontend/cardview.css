@@ -1,0 +1,12 @@
+.card-view {
+  -fx-effect: dropshadow(gaussian, gray, 5, 0.25, 2, 2);
+
+  -fx-text-fill: #2e3032; /* RAL 9004 Signalschwarz */
+  -fx-font-family: Verdana;
+  -fx-font-size: 14px;
+}
+
+.card-view .title {
+  -fx-alignment: center;
+  -fx-wrap-text: true;
+}
