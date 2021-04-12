@@ -15,12 +15,8 @@ import javafx.scene.control.Skin;
 import javafx.scene.paint.Color;
 
 public class CardView extends Control {
-
-  /***************************************************************************
-   *                                                                         *
-   * Constructors                                                            *
-   *                                                                         *
-   **************************************************************************/
+  private final StringProperty title = new SimpleStringProperty(this, "title");
+  private final ObjectProperty<Color> color = new SimpleObjectProperty<>(this, "color");
 
   public CardView() {
     initialize();
@@ -29,14 +25,6 @@ public class CardView extends Control {
   private void initialize() {
     getStyleClass().setAll("card-view");
   }
-
-  /***************************************************************************
-   *                                                                         *
-   * Properties                                                              *
-   *                                                                         *
-   **************************************************************************/
-
-  private final StringProperty title = new SimpleStringProperty(this, "title");
 
   public final StringProperty titleProperty() {
     return title;
@@ -50,8 +38,6 @@ public class CardView extends Control {
     this.title.set(title);
   }
 
-  private final ObjectProperty<Color> color = new SimpleObjectProperty<>(this, "color");
-
   public final Color getColor() {
     return color.get();
   }
@@ -63,12 +49,6 @@ public class CardView extends Control {
   public final void setColor(Color color) {
     this.color.set(color);
   }
-
-  /***************************************************************************
-   *                                                                         *
-   * Methods                                                                 *
-   *                                                                         *
-   **************************************************************************/
 
   @Override
   protected Skin<?> createDefaultSkin() {

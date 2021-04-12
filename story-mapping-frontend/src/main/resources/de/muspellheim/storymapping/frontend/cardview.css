@@ -1,4 +1,11 @@
 .card-view {
+  -fx-min-width: 180px;
+  -fx-pref-width: 180px;
+  -fx-max-width: 180px;
+  -fx-min-height: 120px;
+  -fx-pref-height: 120px;
+  -fx-max-height: 120px;
+
   -fx-effect: dropshadow(gaussian, gray, 5, 0.25, 2, 2);
 
   -fx-text-fill: #2e3032; /* RAL 9004 Signalschwarz */
@@ -7,6 +14,6 @@
 }
 
 .card-view .title {
-  -fx-alignment: center;
+  -fx-alignment: top-left;
   -fx-wrap-text: true;
 }

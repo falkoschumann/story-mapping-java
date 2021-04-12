@@ -19,9 +19,6 @@ class CardViewSkin extends SkinBase<CardView> {
     super(control);
 
     anchorPane = new AnchorPane();
-    anchorPane.setMinSize(180, 120);
-    anchorPane.setPrefSize(180, 120);
-    anchorPane.setMaxSize(180, 120);
     getChildren().add(anchorPane);
 
     title = new Label();
