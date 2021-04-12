@@ -8,6 +8,7 @@ package de.muspellheim.storymapping.frontend;
 import de.muspellheim.storymapping.contract.MessageHandling;
 import de.muspellheim.storymapping.contract.data.ActivityCard;
 import de.muspellheim.storymapping.contract.data.PainCard;
+import de.muspellheim.storymapping.contract.data.UserStoryCard;
 import javafx.geometry.Insets;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
@@ -15,12 +16,13 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 
 public class BoardView extends GridPane {
+  // TODO ScrollPane herumlegen
   private final BoardViewModel viewModel;
 
   public BoardView(MessageHandling messageHandling) {
-    setHgap(12);
-    setVgap(12);
-    setPadding(new Insets(12));
+    setHgap(10);
+    setVgap(10);
+    setPadding(new Insets(10));
     setBackground(new Background(new BackgroundFill(Color.GHOSTWHITE, null, null)));
 
     viewModel = new BoardViewModel(messageHandling);
@@ -28,6 +30,7 @@ public class BoardView extends GridPane {
   }
 
   private void updateBoard() {
+    // TODO Extrahiere Methode createAndPlaceCard()
     var board = viewModel.getBoard();
     for (int i = 0; i < board.cards().size(); i++) {
       var card1 = board.cards().get(i);
@@ -44,10 +47,12 @@ public class BoardView extends GridPane {
           cardView2.setTitle(card2.title());
           GridPane.setConstraints(cardView2, i, j + 1);
           getChildren().add(cardView2);
-          if (card2 instanceof PainCard) {
-            cardView2.setColor(Color.LIGHTCORAL);
-          } else {
+          if (card2 instanceof UserStoryCard userStoryCard) {
             cardView2.setColor(Color.LIGHTGOLDENRODYELLOW);
+            cardView2.setState(userStoryCard.state());
+          } else if (card2 instanceof PainCard painCard) {
+            cardView2.setColor(Color.LIGHTCORAL);
+            cardView2.setState(painCard.state());
           }
         }
       }

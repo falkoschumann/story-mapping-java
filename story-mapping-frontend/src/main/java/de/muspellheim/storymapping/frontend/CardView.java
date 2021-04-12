@@ -5,6 +5,7 @@
 
 package de.muspellheim.storymapping.frontend;
 
+import de.muspellheim.storymapping.contract.data.State;
 import java.util.Objects;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -17,6 +18,7 @@ import javafx.scene.paint.Color;
 public class CardView extends Control {
   private final StringProperty title = new SimpleStringProperty(this, "title");
   private final ObjectProperty<Color> color = new SimpleObjectProperty<>(this, "color");
+  private final ObjectProperty<State> state = new SimpleObjectProperty<>(this, "state");
 
   public CardView() {
     initialize();
@@ -48,6 +50,18 @@ public class CardView extends Control {
 
   public final void setColor(Color color) {
     this.color.set(color);
+  }
+
+  public final ObjectProperty<State> stateProperty() {
+    return state;
+  }
+
+  public final State getState() {
+    return state.get();
+  }
+
+  public final void setState(State state) {
+    this.state.set(state);
   }
 
   @Override

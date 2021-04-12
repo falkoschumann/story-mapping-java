@@ -1,19 +1,37 @@
 .card-view {
-  -fx-min-width: 180px;
-  -fx-pref-width: 180px;
-  -fx-max-width: 180px;
-  -fx-min-height: 120px;
-  -fx-pref-height: 120px;
-  -fx-max-height: 120px;
+  -fx-min-width: 150px;
+  -fx-pref-width: 150px;
+  -fx-max-width: 150px;
+  -fx-min-height: 100px;
+  -fx-pref-height: 100px;
+  -fx-max-height: 100px;
 
   -fx-effect: dropshadow(gaussian, gray, 5, 0.25, 2, 2);
 
   -fx-text-fill: #2e3032; /* RAL 9004 Signalschwarz */
   -fx-font-family: Verdana;
-  -fx-font-size: 14px;
+  -fx-font-size: 12px;
 }
 
 .card-view .title {
   -fx-alignment: top-left;
   -fx-wrap-text: true;
+}
+
+.card-view .state {
+  -fx-pref-width: 12px;
+  -fx-pref-height: 12px;
+  -fx-background-radius: 6px;
+}
+
+.state.ready {
+  -fx-background-color: orangered;
+}
+
+.state.in-progress {
+  -fx-background-color: gold;
+}
+
+.state.done {
+  -fx-background-color: yellowgreen;
 }

@@ -31,23 +31,20 @@
   -fx-wrap-text: true;
 }
 
-.state.ready {
+.state {
   -fx-pref-width: 16px;
   -fx-pref-height: 16px;
   -fx-background-radius: 8px;
+}
+
+.state.ready {
   -fx-background-color: orangered;
 }
 
 .state.in-progress {
-  -fx-pref-width: 16px;
-  -fx-pref-height: 16px;
-  -fx-background-radius: 8px;
   -fx-background-color: gold;
 }
 
 .state.done {
-  -fx-pref-width: 16px;
-  -fx-pref-height: 16px;
-  -fx-background-radius: 8px;
   -fx-background-color: yellowgreen;
 }

@@ -14,7 +14,7 @@ public class BoardStageController {
 
   public BoardStageController(MessageHandling messageHandling, Stage stage) {
     view = new BoardView(messageHandling);
-    var scene = new Scene(view, 1024, 640);
+    var scene = new Scene(view, 1500, 1000);
     stage.setScene(scene);
     stage.setTitle("Story Mapping");
     stage.show();

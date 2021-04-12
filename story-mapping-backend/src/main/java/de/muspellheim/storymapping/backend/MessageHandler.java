@@ -8,6 +8,7 @@ package de.muspellheim.storymapping.backend;
 import de.muspellheim.storymapping.contract.MessageHandling;
 import de.muspellheim.storymapping.contract.data.ActivityCard;
 import de.muspellheim.storymapping.contract.data.Board;
+import de.muspellheim.storymapping.contract.data.State;
 import de.muspellheim.storymapping.contract.data.UserStoryCard;
 import de.muspellheim.storymapping.contract.messages.queries.GetBoardQuery;
 import de.muspellheim.storymapping.contract.messages.queries.GetBoardQueryResult;
@@ -29,8 +30,12 @@ public class MessageHandler implements MessageHandling {
                     "2",
                     "Beschreibe das Gesamtbild",
                     List.of(
-                        new UserStoryCard("2.1", "Schreibe jede Aktivität auf eine Karte"),
-                        new UserStoryCard("2.2", "Ordne die Karten oben in einer Zeile (Backbone)"),
+                        new UserStoryCard(
+                            "2.1", "Schreibe jede Aktivität auf eine Karte", State.READY),
+                        new UserStoryCard(
+                            "2.2",
+                            "Ordne die Karten oben in einer Zeile (Backbone)",
+                            State.IN_PROGRESS),
                         new UserStoryCard("2.3", "Gruppiere Karten optional nach Ziel oder Nutzer"),
                         new UserStoryCard(
                             "2.4",
@@ -39,10 +44,12 @@ public class MessageHandler implements MessageHandling {
                     "3",
                     "Entwickle Lösungen",
                     List.of(
-                        new UserStoryCard("3.1", "Schreibe jede User Stories auf eine Karte"),
+                        new UserStoryCard(
+                            "3.1", "Schreibe jede User Stories auf eine Karte", State.READY),
                         new UserStoryCard(
                             "3.2",
-                            "Ordne die Karten in einer Spalte unter der jeweiligen Aktivität an (Body)"),
+                            "Ordne die Karten in einer Spalte unter der jeweiligen Aktivität an (Body)",
+                            State.IN_PROGRESS),
                         new UserStoryCard(
                             "3.3",
                             "Exportiere Bild mit Aktivitäten als Zeile und User Stories als Spalten"))),
