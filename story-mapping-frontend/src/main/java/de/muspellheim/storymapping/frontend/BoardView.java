@@ -7,8 +7,10 @@ package de.muspellheim.storymapping.frontend;
 
 import de.muspellheim.storymapping.contract.MessageHandling;
 import de.muspellheim.storymapping.contract.data.ActivityCard;
-import de.muspellheim.storymapping.contract.data.PainCard;
+import de.muspellheim.storymapping.contract.data.Card;
+import de.muspellheim.storymapping.contract.data.GoalCard;
 import de.muspellheim.storymapping.contract.data.UserStoryCard;
+import java.util.List;
 import javafx.geometry.Insets;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
@@ -30,31 +32,30 @@ public class BoardView extends GridPane {
   }
 
   private void updateBoard() {
-    // TODO Extrahiere Methode createAndPlaceCard()
     var board = viewModel.getBoard();
-    for (int i = 0; i < board.cards().size(); i++) {
-      var card1 = board.cards().get(i);
-      var cardView1 = new CardView();
-      cardView1.setTitle(card1.title());
-      GridPane.setConstraints(cardView1, i, 0);
-      getChildren().add(cardView1);
-      if (card1 instanceof ActivityCard activityCard) {
-        cardView1.setColor(Color.LIGHTGREEN);
+    createAndPlaceCard(board.cards(), 0, 0);
+  }
 
-        for (int j = 0; j < activityCard.userStories().size(); j++) {
-          var card2 = activityCard.userStories().get(j);
-          var cardView2 = new CardView();
-          cardView2.setTitle(card2.title());
-          GridPane.setConstraints(cardView2, i, j + 1);
-          getChildren().add(cardView2);
-          if (card2 instanceof UserStoryCard userStoryCard) {
-            cardView2.setColor(Color.LIGHTGOLDENRODYELLOW);
-            cardView2.setState(userStoryCard.state());
-          } else if (card2 instanceof PainCard painCard) {
-            cardView2.setColor(Color.LIGHTCORAL);
-            cardView2.setState(painCard.state());
-          }
-        }
+  private void createAndPlaceCard(List<Card> cards, int columnIndex, int rowIndex) {
+    for (Card card : cards) {
+      var cardView = new CardView();
+      cardView.setTitle(card.title());
+      GridPane.setConstraints(cardView, columnIndex, rowIndex);
+      getChildren().add(cardView);
+      if (card instanceof GoalCard goalCard) {
+        cardView.setColor(Color.LIGHTSKYBLUE);
+        createAndPlaceCard(goalCard.activities(), columnIndex, rowIndex + 1);
+        columnIndex += goalCard.activities().size();
+      }
+      if (card instanceof ActivityCard activityCard) {
+        cardView.setColor(Color.LIGHTGREEN);
+        createAndPlaceCard(activityCard.userStories(), columnIndex, rowIndex + 1);
+        columnIndex++;
+      }
+      if (card instanceof UserStoryCard userStoryCard) {
+        cardView.setColor(Color.LIGHTGOLDENRODYELLOW);
+        cardView.setState(userStoryCard.state());
+        rowIndex++;
       }
     }
   }
