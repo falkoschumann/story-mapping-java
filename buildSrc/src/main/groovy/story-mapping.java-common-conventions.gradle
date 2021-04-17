@@ -2,6 +2,7 @@ plugins {
   id 'java'
   id 'jacoco'
   id 'com.diffplug.spotless'
+  id 'io.freefair.lombok'
 }
 
 version = rootProject.version

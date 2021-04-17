@@ -7,4 +7,4 @@ package de.muspellheim.storymapping.contract.data;
 
 import java.util.List;
 
-public record Board(List<Card> cards) {}
+public record Board(String title, List<? extends Card> cards) {}

@@ -5,34 +5,34 @@
 
 === Umreise die Projektziele
 
-- Schreibe Projektvision auf eine Karte
-- Positioniere die Karte oben links
+* Schreibe Projektvision auf eine Karte
+* Positioniere die Karte oben links
 
 === Beschreibe das Gesamtbild
 
-- Schreibe jede Aktivität auf eine Karte
-- Ordne die Karten oben in einer Zeile (Backbone)
-- Gruppiere Karten optional nach Ziel oder Nutzer
-- Exportiere Bild mit Ziel/Nutzer als Zeile und Aktivitäten als Spalten
+* Schreibe jede Aktivität auf eine Karte
+* Ordne die Karten oben in einer Zeile (Backbone)
+* Gruppiere Karten optional nach Ziel oder Nutzer
+* Exportiere Bild mit Ziel/Nutzer als Zeile und Aktivitäten als Spalten
 
 === Entwickle Lösungen
 
-- Schreibe jede User Stories auf eine Karte
-- Ordne die Karten in einer Spalte unter der jeweiligen Aktivität an (Body)
-- Exportiere Bild mit Aktivitäten als Zeile und User Stories als Spalten
+* Schreibe jede User Stories auf eine Karte
+* Ordne die Karten in einer Spalte unter der jeweiligen Aktivität an (Body)
+* Exportiere Bild mit Aktivitäten als Zeile und User Stories als Spalten
 
 == Kanban
 
 === Schneide tragfähige Releases
 
-- Ordne die User Stories jeder Spalte nach ihrer Priorität
-- Lege für jedes Release eine Swimlane mit User Stories an
-- Schreibe den Outcome jedes Releases auf eine Karte
-- Positioniere die Karte mit dem Outcome zu Beginn der jeweiligen Swimlane
-- Exportiere Bild mit Aktivitäten als Zeile und User Stories als Spalten inklusive Swimlanes
+* Ordne die User Stories jeder Spalte nach ihrer Priorität
+* Lege für jedes Release eine Swimlane mit User Stories an
+* Schreibe den Outcome jedes Releases auf eine Karte
+* Positioniere die Karte mit dem Outcome zu Beginn der jeweiligen Swimlane
+* Exportiere Bild mit Aktivitäten als Zeile und User Stories als Spalten inklusive Swimlanes
 
 === Entwickle eine Implementierungsstrategie
 
-- Schreibe optional eine Liste von Tasks für eine User Story
-- Kennzeichne den Zustand einer User Story (Ready, in Progress, Done)
-- Exportiere Kanban-Board mit Zustand als Spalten mit Tasks und User Stories als Swimlanes
+* Schreibe optional eine Liste von Tasks für eine User Story
+* Kennzeichne den Zustand einer User Story (Ready, in Progress, Done)
+* Exportiere Kanban*Board mit Zustand als Spalten mit Tasks und User Stories als Swimlanes

@@ -36,7 +36,7 @@ public class BoardView extends GridPane {
     createAndPlaceCard(board.cards(), 0, 0);
   }
 
-  private void createAndPlaceCard(List<Card> cards, int columnIndex, int rowIndex) {
+  private void createAndPlaceCard(List<? extends Card> cards, int columnIndex, int rowIndex) {
     for (Card card : cards) {
       var cardView = new CardView();
       cardView.setTitle(card.title());
