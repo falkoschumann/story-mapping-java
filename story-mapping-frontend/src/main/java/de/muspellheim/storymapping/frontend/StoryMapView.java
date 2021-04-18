@@ -16,6 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToolBar;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -42,6 +43,7 @@ public class StoryMapView extends VBox {
     getChildren().add(toolBar);
 
     board = new Board();
+    VBox.setVgrow(board, Priority.ALWAYS);
     getChildren().add(board);
 
     viewModel = new StoryMapViewModel(messageHandling);

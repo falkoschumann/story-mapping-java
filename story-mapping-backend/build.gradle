@@ -5,4 +5,5 @@ plugins {
 dependencies {
   api project(':story-mapping-contract')
   implementation 'org.glassfish:jakarta.json:2.0.0'
+  implementation 'org.glassfish:jakarta.json:2.0.0:module'
 }

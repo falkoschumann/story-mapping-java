@@ -1,0 +1,157 @@
+{
+  "type": "Project",
+  "title": "Story Mapping",
+  "stories": [
+    {
+      "type": "Goal",
+      "id": "G1",
+      "title": "Story Mapping",
+      "activities": [
+        {
+          "type": "Activity",
+          "id": "A1",
+          "title": "Umreise die Projektziele",
+          "userStories": [
+            {
+              "type": "UserStory",
+              "id": "U1",
+              "title": "Schreibe Projektvision auf eine Karte",
+              "state": "OPEN"
+            },
+            {
+              "type": "UserStory",
+              "id": "U2",
+              "title": "Positioniere die Karte oben links",
+              "state": "OPEN"
+            }
+          ]
+        },
+        {
+          "type": "Activity",
+          "id": "A2",
+          "title": "Beschreibe das Gesamtbild",
+          "userStories": [
+            {
+              "type": "UserStory",
+              "id": "U3",
+              "title": "Schreibe jede Aktivität auf eine Karte",
+              "state": "READY"
+            },
+            {
+              "type": "UserStory",
+              "id": "U4",
+              "title": "Ordne die Karten oben in einer Zeile (Backbone)",
+              "state": "IN_PROGRESS"
+            },
+            {
+              "type": "UserStory",
+              "id": "U5",
+              "title": "Gruppiere Karten optional nach Ziel oder Nutzer",
+              "state": "IN_PROGRESS"
+            },
+            {
+              "type": "UserStory",
+              "id": "U6",
+              "title": "Exportiere Bild mit Ziel/Nutzer als Zeile und Aktivitäten als Spalten",
+              "state": "OPEN"
+            }
+          ]
+        },
+        {
+          "type": "Activity",
+          "id": "A3",
+          "title": "Entwickle Lösungen",
+          "userStories": [
+            {
+              "type": "UserStory",
+              "id": "U7",
+              "title": "Schreibe jede User Stories auf eine Karte",
+              "state": "READY"
+            },
+            {
+              "type": "UserStory",
+              "id": "U8",
+              "title": "Ordne die Karten in einer Spalte unter der jeweiligen Aktivität an (Body)",
+              "state": "IN_PROGRESS"
+            },
+            {
+              "type": "UserStory",
+              "id": "U9",
+              "title": "Exportiere Bild mit Aktivitäten als Zeile und User Stories als Spalten",
+              "state": "OPEN"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Goal",
+      "id": "G2",
+      "title": "Kanban",
+      "activities": [
+        {
+          "type": "Activity",
+          "id": "A4",
+          "title": "Schneide tragfähige Releases",
+          "userStories": [
+            {
+              "type": "UserStory",
+              "id": "U10",
+              "title": "Ordne die User Stories jeder Spalte nach ihrer Priorität",
+              "state": "OPEN"
+            },
+            {
+              "type": "UserStory",
+              "id": "U11",
+              "title": "Lege für jedes Release eine Swimlane mit User Stories an",
+              "state": "OPEN"
+            },
+            {
+              "type": "UserStory",
+              "id": "U12",
+              "title": "Schreibe den Outcome jedes Releases auf eine Karte",
+              "state": "OPEN"
+            },
+            {
+              "type": "UserStory",
+              "id": "U13",
+              "title": "Positioniere die Karte mit dem Outcome zu Beginn der jeweiligen Swimlane",
+              "state": "OPEN"
+            },
+            {
+              "type": "UserStory",
+              "id": "U14",
+              "title": "Exportiere Bild mit Aktivitäten als Zeile und User Stories als Spalten inklusive Swimlanes",
+              "state": "OPEN"
+            }
+          ]
+        },
+        {
+          "type": "Activity",
+          "id": "A5",
+          "title": "Entwickle eine Implementierungsstrategie",
+          "userStories": [
+            {
+              "type": "UserStory",
+              "id": "U15",
+              "title": "Schreibe optional eine Liste von Tasks für eine User Story",
+              "state": "OPEN"
+            },
+            {
+              "type": "UserStory",
+              "id": "U16",
+              "title": "Kennzeichne den Zustand einer User Story (Ready, in Progress, Done)",
+              "state": "OPEN"
+            },
+            {
+              "type": "UserStory",
+              "id": "U17",
+              "title": "Exportiere Kanban-Board mit Zustand als Spalten mit Tasks und User Stories als Swimlanes",
+              "state": "OPEN"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
