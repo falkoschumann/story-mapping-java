@@ -6,13 +6,13 @@
 package de.muspellheim.storymapping.frontend;
 
 import de.muspellheim.storymapping.contract.MessageHandling;
-import de.muspellheim.storymapping.contract.data.Board;
+import de.muspellheim.storymapping.contract.data.Project;
 import de.muspellheim.storymapping.contract.messages.queries.GetBoardQuery;
 import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 
 public class BoardViewModel {
-  private final ReadOnlyObjectWrapper<Board> boardProperty = new ReadOnlyObjectWrapper<>();
+  private final ReadOnlyObjectWrapper<Project> boardProperty = new ReadOnlyObjectWrapper<>();
 
   private final MessageHandling messageHandling;
 
@@ -20,11 +20,11 @@ public class BoardViewModel {
     this.messageHandling = messageHandling;
   }
 
-  public ReadOnlyObjectProperty<Board> boardPropertyProperty() {
+  public ReadOnlyObjectProperty<Project> boardPropertyProperty() {
     return boardProperty.getReadOnlyProperty();
   }
 
-  public Board getBoard() {
+  public Project getBoard() {
     return boardProperty.get();
   }
 

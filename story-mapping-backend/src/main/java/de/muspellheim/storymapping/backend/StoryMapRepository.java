@@ -5,10 +5,10 @@
 
 package de.muspellheim.storymapping.backend;
 
-import de.muspellheim.storymapping.contract.data.Board;
+import de.muspellheim.storymapping.contract.data.Project;
 
 public interface StoryMapRepository {
-  Board loadBoard();
+  Project loadBoard();
 
-  void storeBoard(Board board);
+  void storeBoard(Project board);
 }

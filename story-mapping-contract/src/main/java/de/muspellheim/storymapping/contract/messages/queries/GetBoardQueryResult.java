@@ -5,6 +5,6 @@
 
 package de.muspellheim.storymapping.contract.messages.queries;
 
-import de.muspellheim.storymapping.contract.data.Board;
+import de.muspellheim.storymapping.contract.data.Project;
 
-public record GetBoardQueryResult(Board board) {}
+public record GetBoardQueryResult(Project board) {}

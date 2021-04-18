@@ -5,6 +5,8 @@
 
 package de.muspellheim.storymapping.contract.data;
 
-import java.util.List;
-
-public record Board(String title, List<? extends Card> cards) {}
+public record Pain(String id, String title, State state) implements Story {
+  public Pain(String id, String title) {
+    this(id, title, State.OPEN);
+  }
+}

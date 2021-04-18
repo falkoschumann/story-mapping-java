@@ -5,8 +5,6 @@
 
 package de.muspellheim.storymapping.contract.data;
 
-public interface Card {
-  String id();
+import java.util.List;
 
-  String title();
-}
+public record Project(String title, List<? extends Story> stories) {}
