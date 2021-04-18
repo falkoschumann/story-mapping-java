@@ -20,7 +20,7 @@ public class MessageHandler implements MessageHandling {
   public GetBoardQueryResult handle(GetBoardQuery query) {
     return new GetBoardQueryResult(
         new Project(
-            "Story Mappung",
+            "Story Map",
             List.of(
                 new Goal(
                     "1",

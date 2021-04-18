@@ -11,51 +11,43 @@ import de.muspellheim.storymapping.contract.data.Goal;
 import de.muspellheim.storymapping.contract.data.Story;
 import de.muspellheim.storymapping.contract.data.UserStory;
 import java.util.List;
-import javafx.geometry.Insets;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 
-public class StoryMapView extends GridPane {
-  // TODO ScrollPane herumlegen
+public class StoryMapView extends Board {
   private final StoryMapViewModel viewModel;
 
   public StoryMapView(MessageHandling messageHandling) {
-    setHgap(10);
-    setVgap(10);
-    setPadding(new Insets(10));
-    setBackground(new Background(new BackgroundFill(Color.GHOSTWHITE, null, null)));
-
     viewModel = new StoryMapViewModel(messageHandling);
     viewModel.boardPropertyProperty().addListener(o -> updateBoard());
   }
 
   private void updateBoard() {
     var board = viewModel.getBoard();
+    setTitle(board.title());
     createAndPlaceCard(board.stories(), 0, 0);
   }
 
-  private void createAndPlaceCard(List<? extends Story> cards, int columnIndex, int rowIndex) {
-    for (Story card : cards) {
-      var cardView = new Card();
-      cardView.setTitle(card.title());
-      GridPane.setConstraints(cardView, columnIndex, rowIndex);
-      getChildren().add(cardView);
-      if (card instanceof Goal goalCard) {
-        cardView.setColor(Color.LIGHTSKYBLUE);
-        createAndPlaceCard(goalCard.activities(), columnIndex, rowIndex + 1);
-        columnIndex += goalCard.activities().size();
+  private void createAndPlaceCard(List<? extends Story> stories, int column, int row) {
+    for (Story story : stories) {
+      var card = new Card();
+      card.setTitle(story.title());
+      card.setColumn(column);
+      card.setRow(row);
+      getCards().add(card);
+      if (story instanceof Goal goalCard) {
+        card.setColor(Color.LIGHTSKYBLUE);
+        createAndPlaceCard(goalCard.activities(), column, row + 1);
+        column += goalCard.activities().size();
       }
-      if (card instanceof Activity activityCard) {
-        cardView.setColor(Color.LIGHTGREEN);
-        createAndPlaceCard(activityCard.userStories(), columnIndex, rowIndex + 1);
-        columnIndex++;
+      if (story instanceof Activity activityCard) {
+        card.setColor(Color.LIGHTGREEN);
+        createAndPlaceCard(activityCard.userStories(), column, row + 1);
+        column++;
       }
-      if (card instanceof UserStory userStoryCard) {
-        cardView.setColor(Color.LIGHTGOLDENRODYELLOW);
-        cardView.setState(userStoryCard.state());
-        rowIndex++;
+      if (story instanceof UserStory userStoryCard) {
+        card.setColor(Color.LIGHTGOLDENRODYELLOW);
+        card.setState(userStoryCard.state());
+        row++;
       }
     }
   }

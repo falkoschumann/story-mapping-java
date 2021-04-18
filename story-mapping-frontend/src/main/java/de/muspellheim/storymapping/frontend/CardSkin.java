@@ -44,14 +44,14 @@ class CardSkin extends SkinBase<Card> {
   }
 
   private void updateChildren() {
-    var cardView = getSkinnable();
+    var card = getSkinnable();
 
-    title.setText(cardView.getTitle());
-    anchorPane.setBackground(new Background(new BackgroundFill(cardView.getColor(), null, null)));
+    title.setText(card.getTitle());
+    anchorPane.setBackground(new Background(new BackgroundFill(card.getColor(), null, null)));
 
-    if (cardView.getState() != null) {
+    if (card.getState() != null) {
       AnchorPane.setBottomAnchor(title, 16.0);
-      switch (cardView.getState()) {
+      switch (card.getState()) {
         case OPEN:
         case CLOSED:
           break;

@@ -1,4 +1,4 @@
-.card-view {
+.card {
   -fx-min-width: 150px;
   -fx-pref-width: 150px;
   -fx-max-width: 150px;
@@ -13,25 +13,25 @@
   -fx-font-size: 12px;
 }
 
-.card-view .title {
+.card .title {
   -fx-alignment: top-left;
   -fx-wrap-text: true;
 }
 
-.card-view .state {
+.card .state {
   -fx-pref-width: 12px;
   -fx-pref-height: 12px;
   -fx-background-radius: 6px;
 }
 
-.state.ready {
+.card .state.ready {
   -fx-background-color: orangered;
 }
 
-.state.in-progress {
+.card .state.in-progress {
   -fx-background-color: gold;
 }
 
-.state.done {
+.card .state.done {
   -fx-background-color: yellowgreen;
 }
