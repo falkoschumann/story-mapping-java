@@ -7,12 +7,14 @@ package de.muspellheim.storymapping.frontend;
 
 import de.muspellheim.storymapping.contract.MessageHandling;
 import de.muspellheim.storymapping.contract.data.Project;
+import de.muspellheim.storymapping.contract.messages.commands.OpenFileCommand;
 import de.muspellheim.storymapping.contract.messages.queries.GetBoardQuery;
+import java.nio.file.Path;
 import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 
 public class StoryMapViewModel {
-  private final ReadOnlyObjectWrapper<Project> boardProperty = new ReadOnlyObjectWrapper<>();
+  private final ReadOnlyObjectWrapper<Project> project = new ReadOnlyObjectWrapper<>();
 
   private final MessageHandling messageHandling;
 
@@ -20,16 +22,22 @@ public class StoryMapViewModel {
     this.messageHandling = messageHandling;
   }
 
-  public ReadOnlyObjectProperty<Project> boardPropertyProperty() {
-    return boardProperty.getReadOnlyProperty();
+  public ReadOnlyObjectProperty<Project> projectProperty() {
+    return project.getReadOnlyProperty();
   }
 
   public Project getBoard() {
-    return boardProperty.get();
+    return project.get();
   }
 
   public void run() {
     var result = messageHandling.handle(new GetBoardQuery());
-    boardProperty.set(result.board());
+    project.set(result.board());
+  }
+
+  public void openFile(Path file) {
+    messageHandling.handle(new OpenFileCommand(file));
+    var result = messageHandling.handle(new GetBoardQuery());
+    project.set(result.board());
   }
 }

@@ -25,7 +25,7 @@ public class JsonStoryMapRepositoryTest {
   void load() {
     var repository = new JsonStoryMapRepository(EXAMPLE_PATH);
 
-    var board = repository.loadBoard();
+    var board = repository.loadProject();
 
     assertEquals(createExampleBoard(), board);
   }
@@ -36,7 +36,7 @@ public class JsonStoryMapRepositoryTest {
     var repository = new JsonStoryMapRepository(file);
 
     var board = createExampleBoard();
-    repository.storeBoard(board);
+    repository.storeProject(board);
 
     var expected = String.join("\n", Files.readAllLines(EXAMPLE_PATH));
     var actual = String.join("\n", Files.readAllLines(file));

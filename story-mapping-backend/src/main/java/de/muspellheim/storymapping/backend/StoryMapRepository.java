@@ -8,7 +8,7 @@ package de.muspellheim.storymapping.backend;
 import de.muspellheim.storymapping.contract.data.Project;
 
 public interface StoryMapRepository {
-  Project loadBoard();
+  Project loadProject();
 
-  void storeBoard(Project board);
+  void storeProject(Project project);
 }

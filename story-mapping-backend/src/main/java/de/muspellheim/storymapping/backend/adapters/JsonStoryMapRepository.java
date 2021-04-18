@@ -19,13 +19,13 @@ public class JsonStoryMapRepository implements StoryMapRepository {
 
   @Override
   @SneakyThrows
-  public Project loadBoard() {
+  public Project loadProject() {
     return new JsonStoryMapReader(file).read();
   }
 
   @Override
   @SneakyThrows
-  public void storeBoard(Project project) {
+  public void storeProject(Project project) {
     new JsonStoryMapWriter(file).write(project);
   }
 }

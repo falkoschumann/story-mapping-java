@@ -11,20 +11,61 @@ import de.muspellheim.storymapping.contract.data.Goal;
 import de.muspellheim.storymapping.contract.data.Story;
 import de.muspellheim.storymapping.contract.data.UserStory;
 import java.util.List;
+import java.util.Objects;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ToolBar;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
 
-public class StoryMapView extends Board {
+public class StoryMapView extends VBox {
+  private final Label title;
+  private final Board board;
+
   private final StoryMapViewModel viewModel;
 
   public StoryMapView(MessageHandling messageHandling) {
+    title = new Label();
+    title.setFont(new Font("Verdana", 24));
+
+    var iconUrl =
+        Objects.requireNonNull(StoryMapView.class.getResource("icons/folder-open.png"))
+            .toExternalForm();
+    var openButton = new Button("", new ImageView(iconUrl));
+    openButton.setOnAction(e -> handleOpen());
+
+    var toolBar = new ToolBar(title, Spacer.newHSpacer(), openButton);
+    getChildren().add(toolBar);
+
+    board = new Board();
+    getChildren().add(board);
+
     viewModel = new StoryMapViewModel(messageHandling);
-    viewModel.boardPropertyProperty().addListener(o -> updateBoard());
+    viewModel.projectProperty().addListener(o -> updateBoard());
+  }
+
+  private void handleOpen() {
+    var chooser = new FileChooser();
+    chooser.setTitle("Open Story Map");
+    chooser
+        .getExtensionFilters()
+        .add(new ExtensionFilter("Project (*.adoc, *.json)", "*.adoc", "*.json"));
+    var file = chooser.showOpenDialog(getScene().getWindow());
+    if (file == null) {
+      return;
+    }
+
+    viewModel.openFile(file.toPath());
   }
 
   private void updateBoard() {
-    var board = viewModel.getBoard();
-    setTitle(board.title());
-    createAndPlaceCard(board.stories(), 0, 0);
+    var project = viewModel.getBoard();
+    title.setText(project.title());
+    createAndPlaceCard(project.stories(), 0, 0);
   }
 
   private void createAndPlaceCard(List<? extends Story> stories, int column, int row) {
@@ -33,7 +74,7 @@ public class StoryMapView extends Board {
       card.setTitle(story.title());
       card.setColumn(column);
       card.setRow(row);
-      getCards().add(card);
+      board.getCards().add(card);
       if (story instanceof Goal goalCard) {
         card.setColor(Color.LIGHTSKYBLUE);
         createAndPlaceCard(goalCard.activities(), column, row + 1);

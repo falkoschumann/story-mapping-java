@@ -25,7 +25,7 @@ public class AsciiDocStoryMapRepositoryTest {
   void load() {
     var repository = new AsciiDocStoryMapRepository(EXAMPLE_PATH);
 
-    var board = repository.loadBoard();
+    var board = repository.loadProject();
 
     assertEquals(createExampleBoard(), board);
   }
@@ -36,7 +36,7 @@ public class AsciiDocStoryMapRepositoryTest {
     var repository = new AsciiDocStoryMapRepository(file);
 
     var board = createExampleBoard();
-    repository.storeBoard(board);
+    repository.storeProject(board);
 
     var expected = String.join("\n", Files.readAllLines(EXAMPLE_PATH));
     var actual = String.join("\n", Files.readAllLines(file));

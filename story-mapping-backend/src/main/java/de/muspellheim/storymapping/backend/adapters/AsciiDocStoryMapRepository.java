@@ -19,13 +19,13 @@ public class AsciiDocStoryMapRepository implements StoryMapRepository {
 
   @Override
   @SneakyThrows
-  public Project loadBoard() {
+  public Project loadProject() {
     return new AsciiDocStoryMapReader(file).read();
   }
 
   @Override
   @SneakyThrows
-  public void storeBoard(Project project) {
+  public void storeProject(Project project) {
     new AsciiDocStoryMapWriter(file).write(project);
   }
 }
