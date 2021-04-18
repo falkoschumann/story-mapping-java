@@ -8,6 +8,7 @@ package de.muspellheim.storymapping.backend.adapters;
 import de.muspellheim.storymapping.contract.data.Activity;
 import de.muspellheim.storymapping.contract.data.Goal;
 import de.muspellheim.storymapping.contract.data.Project;
+import de.muspellheim.storymapping.contract.data.State;
 import de.muspellheim.storymapping.contract.data.UserStory;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -42,21 +43,25 @@ public class AsciiDocStoryMapReader {
       var line = lines.get(i);
       if (line.startsWith("= ")) {
         boardTitle = line.substring(2);
-        System.out.println("Found board: " + boardTitle);
       } else if (line.startsWith("== ")) {
         var title = line.substring(3);
-        System.out.println("Found goal: " + title);
         goals.addFirst(new Goal("G" + goalIndex++, title, List.copyOf(activities)));
         activities.clear();
       } else if (line.startsWith("=== ")) {
         var title = line.substring(4);
-        System.out.println("Found activity: " + title);
         activities.addFirst(new Activity("A" + activityIndex++, title, List.copyOf(userStories)));
         userStories.clear();
       } else if (line.startsWith("* ")) {
         var title = line.substring(2);
-        System.out.println("Found user story: " + title);
-        userStories.addFirst(new UserStory("U" + userStoryIndex++, title));
+        var state = State.OPEN;
+        if (title.startsWith("[ ] ")) {
+          title = title.substring(4);
+          state = State.READY;
+        } else if (title.startsWith("[x] ")) {
+          title = title.substring(4);
+          state = State.DONE;
+        }
+        userStories.addFirst(new UserStory("U" + userStoryIndex++, title, state));
       }
     }
     return new Project(boardTitle, List.copyOf(goals));
