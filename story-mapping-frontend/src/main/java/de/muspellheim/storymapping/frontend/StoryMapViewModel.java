@@ -11,12 +11,12 @@ import de.muspellheim.storymapping.contract.messages.queries.GetBoardQuery;
 import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 
-public class BoardViewModel {
+public class StoryMapViewModel {
   private final ReadOnlyObjectWrapper<Project> boardProperty = new ReadOnlyObjectWrapper<>();
 
   private final MessageHandling messageHandling;
 
-  public BoardViewModel(MessageHandling messageHandling) {
+  public StoryMapViewModel(MessageHandling messageHandling) {
     this.messageHandling = messageHandling;
   }
 

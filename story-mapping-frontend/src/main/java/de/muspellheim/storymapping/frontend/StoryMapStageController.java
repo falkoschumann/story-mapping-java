@@ -9,11 +9,11 @@ import de.muspellheim.storymapping.contract.MessageHandling;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class BoardStageController {
-  private final BoardView view;
+public class StoryMapStageController {
+  private final StoryMapView view;
 
-  public BoardStageController(MessageHandling messageHandling, Stage stage) {
-    view = new BoardView(messageHandling);
+  public StoryMapStageController(MessageHandling messageHandling, Stage stage) {
+    view = new StoryMapView(messageHandling);
     var scene = new Scene(view, 1500, 1000);
     stage.setScene(scene);
     stage.setTitle("Story Mapping");

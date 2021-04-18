@@ -17,17 +17,17 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 
-public class BoardView extends GridPane {
+public class StoryMapView extends GridPane {
   // TODO ScrollPane herumlegen
-  private final BoardViewModel viewModel;
+  private final StoryMapViewModel viewModel;
 
-  public BoardView(MessageHandling messageHandling) {
+  public StoryMapView(MessageHandling messageHandling) {
     setHgap(10);
     setVgap(10);
     setPadding(new Insets(10));
     setBackground(new Background(new BackgroundFill(Color.GHOSTWHITE, null, null)));
 
-    viewModel = new BoardViewModel(messageHandling);
+    viewModel = new StoryMapViewModel(messageHandling);
     viewModel.boardPropertyProperty().addListener(o -> updateBoard());
   }
 
