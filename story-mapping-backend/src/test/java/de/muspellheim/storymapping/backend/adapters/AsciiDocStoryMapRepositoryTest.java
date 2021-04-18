@@ -7,10 +7,10 @@ package de.muspellheim.storymapping.backend.adapters;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import de.muspellheim.storymapping.contract.data.ActivityCard;
-import de.muspellheim.storymapping.contract.data.Board;
-import de.muspellheim.storymapping.contract.data.GoalCard;
-import de.muspellheim.storymapping.contract.data.UserStoryCard;
+import de.muspellheim.storymapping.contract.data.Activity;
+import de.muspellheim.storymapping.contract.data.Goal;
+import de.muspellheim.storymapping.contract.data.Project;
+import de.muspellheim.storymapping.contract.data.UserStory;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -23,8 +23,7 @@ public class AsciiDocStoryMapRepositoryTest {
 
   @Test
   void load() {
-    var file = EXAMPLE_PATH;
-    var repository = new AsciiDocStoryMapRepository(file);
+    var repository = new AsciiDocStoryMapRepository(EXAMPLE_PATH);
 
     var board = repository.loadBoard();
 
@@ -44,32 +43,31 @@ public class AsciiDocStoryMapRepositoryTest {
     assertEquals(expected, actual);
   }
 
-  private static Board createExampleBoard() {
-    return new Board(
+  private static Project createExampleBoard() {
+    return new Project(
         "Foobar",
         List.of(
-            new GoalCard(
+            new Goal(
                 "G2",
                 "Foo",
                 List.of(
-                    new ActivityCard(
+                    new Activity(
                         "A3",
                         "Foo 1",
                         List.of(
-                            new UserStoryCard("U6", "Lorem ipsum 1"),
-                            new UserStoryCard("U5", "Lorem ipsum 2"))),
-                    new ActivityCard(
-                        "A2", "Foo 2", List.of(new UserStoryCard("U4", "Lorem ipsum 3"))))),
-            new GoalCard(
+                            new UserStory("U6", "Lorem ipsum 1"),
+                            new UserStory("U5", "Lorem ipsum 2"))),
+                    new Activity("A2", "Foo 2", List.of(new UserStory("U4", "Lorem ipsum 3"))))),
+            new Goal(
                 "G1",
                 "Bar",
                 List.of(
-                    new ActivityCard(
+                    new Activity(
                         "A1",
                         "Bar 1",
                         List.of(
-                            new UserStoryCard("U3", "Lorem ipsum 4"),
-                            new UserStoryCard("U2", "Lorem ipsum 5"),
-                            new UserStoryCard("U1", "Lorem ipsum 6")))))));
+                            new UserStory("U3", "Lorem ipsum 4"),
+                            new UserStory("U2", "Lorem ipsum 5"),
+                            new UserStory("U1", "Lorem ipsum 6")))))));
   }
 }

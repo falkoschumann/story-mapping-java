@@ -5,10 +5,10 @@
 
 package de.muspellheim.storymapping.backend.adapters;
 
-import de.muspellheim.storymapping.contract.data.ActivityCard;
-import de.muspellheim.storymapping.contract.data.Board;
-import de.muspellheim.storymapping.contract.data.GoalCard;
-import de.muspellheim.storymapping.contract.data.UserStoryCard;
+import de.muspellheim.storymapping.contract.data.Activity;
+import de.muspellheim.storymapping.contract.data.Goal;
+import de.muspellheim.storymapping.contract.data.Project;
+import de.muspellheim.storymapping.contract.data.UserStory;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -21,13 +21,13 @@ public class AsciiDocStoryMapReader {
   private final Path file;
 
   private String boardTitle;
-  private final Deque<GoalCard> goals = new LinkedList<>();
+  private final Deque<Goal> goals = new LinkedList<>();
 
   private int goalIndex = 1;
-  private final Deque<ActivityCard> activities = new LinkedList<>();
+  private final Deque<Activity> activities = new LinkedList<>();
 
   private int activityIndex = 1;
-  private final Deque<UserStoryCard> userStories = new LinkedList<>();
+  private final Deque<UserStory> userStories = new LinkedList<>();
 
   private int userStoryIndex = 1;
 
@@ -35,7 +35,7 @@ public class AsciiDocStoryMapReader {
     this.file = file;
   }
 
-  public Board read() throws IOException {
+  public Project read() throws IOException {
     var lines = Files.readAllLines(file, StandardCharsets.UTF_8);
     goals.clear();
     for (int i = lines.size() - 1; i >= 0; i--) {
@@ -46,20 +46,19 @@ public class AsciiDocStoryMapReader {
       } else if (line.startsWith("== ")) {
         var title = line.substring(3);
         System.out.println("Found goal: " + title);
-        goals.addFirst(new GoalCard("G" + goalIndex++, title, List.copyOf(activities)));
+        goals.addFirst(new Goal("G" + goalIndex++, title, List.copyOf(activities)));
         activities.clear();
       } else if (line.startsWith("=== ")) {
         var title = line.substring(4);
         System.out.println("Found activity: " + title);
-        activities.addFirst(
-            new ActivityCard("A" + activityIndex++, title, List.copyOf(userStories)));
+        activities.addFirst(new Activity("A" + activityIndex++, title, List.copyOf(userStories)));
         userStories.clear();
       } else if (line.startsWith("* ")) {
         var title = line.substring(2);
         System.out.println("Found user story: " + title);
-        userStories.addFirst(new UserStoryCard("U" + userStoryIndex++, title));
+        userStories.addFirst(new UserStory("U" + userStoryIndex++, title));
       }
     }
-    return new Board(boardTitle, List.copyOf(goals));
+    return new Project(boardTitle, List.copyOf(goals));
   }
 }

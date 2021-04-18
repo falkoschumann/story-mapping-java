@@ -6,7 +6,7 @@
 package de.muspellheim.storymapping.backend.adapters;
 
 import de.muspellheim.storymapping.backend.StoryMapRepository;
-import de.muspellheim.storymapping.contract.data.Board;
+import de.muspellheim.storymapping.contract.data.Project;
 import java.nio.file.Path;
 import lombok.SneakyThrows;
 
@@ -19,13 +19,13 @@ public class AsciiDocStoryMapRepository implements StoryMapRepository {
 
   @Override
   @SneakyThrows
-  public Board loadBoard() {
+  public Project loadBoard() {
     return new AsciiDocStoryMapReader(file).read();
   }
 
   @Override
   @SneakyThrows
-  public void storeBoard(Board board) {
-    new AsciiDocStoryMapWriter(file).write(board);
+  public void storeBoard(Project project) {
+    new AsciiDocStoryMapWriter(file).write(project);
   }
 }

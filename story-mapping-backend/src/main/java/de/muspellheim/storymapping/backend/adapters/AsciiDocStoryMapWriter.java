@@ -5,11 +5,11 @@
 
 package de.muspellheim.storymapping.backend.adapters;
 
-import de.muspellheim.storymapping.contract.data.ActivityCard;
-import de.muspellheim.storymapping.contract.data.Board;
-import de.muspellheim.storymapping.contract.data.Card;
-import de.muspellheim.storymapping.contract.data.GoalCard;
-import de.muspellheim.storymapping.contract.data.UserStoryCard;
+import de.muspellheim.storymapping.contract.data.Activity;
+import de.muspellheim.storymapping.contract.data.Goal;
+import de.muspellheim.storymapping.contract.data.Project;
+import de.muspellheim.storymapping.contract.data.Story;
+import de.muspellheim.storymapping.contract.data.UserStory;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -25,27 +25,27 @@ public class AsciiDocStoryMapWriter {
     this.file = file;
   }
 
-  public void write(Board board) throws IOException {
+  public void write(Project project) throws IOException {
     Files.createDirectories(file.getParent());
     lines.clear();
 
-    lines.add("= " + board.title());
+    lines.add("= " + project.title());
     lines.add(":toc:");
-    board.cards().forEach(this::write);
+    project.stories().forEach(this::write);
     Files.write(file, lines, StandardCharsets.UTF_8);
   }
 
-  private void write(Card card) {
-    if (card instanceof GoalCard goalCard) {
+  private void write(Story card) {
+    if (card instanceof Goal goalCard) {
       lines.add("");
       lines.add("== " + goalCard.title());
       goalCard.activities().forEach(this::write);
-    } else if (card instanceof ActivityCard activityCard) {
+    } else if (card instanceof Activity activityCard) {
       lines.add("");
       lines.add("=== " + activityCard.title());
       lines.add("");
       activityCard.userStories().forEach(this::write);
-    } else if (card instanceof UserStoryCard userStoryCard) {
+    } else if (card instanceof UserStory userStoryCard) {
       lines.add("* " + userStoryCard.title());
     }
   }
