@@ -11,14 +11,14 @@ import de.muspellheim.storymapping.contract.data.Project;
 import de.muspellheim.storymapping.contract.data.State;
 import de.muspellheim.storymapping.contract.data.Story;
 import de.muspellheim.storymapping.contract.data.UserStory;
+import jakarta.json.Json;
+import jakarta.json.JsonArray;
+import jakarta.json.JsonObject;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
-import javax.json.Json;
-import javax.json.JsonArray;
-import javax.json.JsonObject;
 
 public class JsonStoryMapReader {
   private final Path file;

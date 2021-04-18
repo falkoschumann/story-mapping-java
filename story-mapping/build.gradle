@@ -13,7 +13,7 @@ dependencies {
 
 application {
   mainModule = 'de.muspellheim.storymapping'
-  mainClassName = 'de.muspellheim.storymapping.App'
+  mainClass = 'de.muspellheim.storymapping.App'
 }
 
 def year = LocalDate.now().year

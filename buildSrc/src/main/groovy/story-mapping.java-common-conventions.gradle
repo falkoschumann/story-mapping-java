@@ -3,7 +3,6 @@ plugins {
   id 'jacoco'
   id 'com.diffplug.spotless'
   id 'io.freefair.lombok'
-  id 'extra-java-module-info'
 }
 
 version = rootProject.version
@@ -48,14 +47,5 @@ spotless {
   java {
     googleJavaFormat()
     licenseHeaderFile('config/LicenseHeader.txt')
-  }
-}
-
-extraJavaModuleInfo {
-  module('jakarta.json-1.1.6.jar', 'javax.json', '1.1.6') {
-    exports('javax.json')
-    exports('javax.json.spi')
-    exports('javax.json.stream')
-    provides('javax.json.spi.JsonProvider', 'org.glassfish.json.JsonProviderImpl')
   }
 }

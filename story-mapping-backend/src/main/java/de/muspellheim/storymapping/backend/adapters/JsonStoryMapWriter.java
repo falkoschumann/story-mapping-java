@@ -10,14 +10,14 @@ import de.muspellheim.storymapping.contract.data.Goal;
 import de.muspellheim.storymapping.contract.data.Project;
 import de.muspellheim.storymapping.contract.data.Story;
 import de.muspellheim.storymapping.contract.data.UserStory;
+import jakarta.json.Json;
+import jakarta.json.JsonArrayBuilder;
+import jakarta.json.stream.JsonGenerator;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.Map;
-import javax.json.Json;
-import javax.json.JsonArrayBuilder;
-import javax.json.stream.JsonGenerator;
 
 public class JsonStoryMapWriter {
   private final Path file;
