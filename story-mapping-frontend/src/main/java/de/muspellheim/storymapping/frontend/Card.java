@@ -15,12 +15,12 @@ import javafx.scene.control.Control;
 import javafx.scene.control.Skin;
 import javafx.scene.paint.Color;
 
-public class CardView extends Control {
+public class Card extends Control {
   private final StringProperty title = new SimpleStringProperty(this, "title");
   private final ObjectProperty<Color> color = new SimpleObjectProperty<>(this, "color");
   private final ObjectProperty<State> state = new SimpleObjectProperty<>(this, "state");
 
-  public CardView() {
+  public Card() {
     initialize();
   }
 
@@ -66,11 +66,11 @@ public class CardView extends Control {
 
   @Override
   protected Skin<?> createDefaultSkin() {
-    return new CardViewSkin(this);
+    return new CardSkin(this);
   }
 
   @Override
   public String getUserAgentStylesheet() {
-    return Objects.requireNonNull(CardView.class.getResource("cardview.css")).toExternalForm();
+    return Objects.requireNonNull(Card.class.getResource("card.css")).toExternalForm();
   }
 }

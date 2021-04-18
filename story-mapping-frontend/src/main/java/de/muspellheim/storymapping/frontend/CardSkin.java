@@ -12,12 +12,12 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.Region;
 
-class CardViewSkin extends SkinBase<CardView> {
+class CardSkin extends SkinBase<Card> {
   private final AnchorPane anchorPane;
   private final Label title;
   private final Region state;
 
-  protected CardViewSkin(CardView control) {
+  protected CardSkin(Card control) {
     super(control);
 
     anchorPane = new AnchorPane();
