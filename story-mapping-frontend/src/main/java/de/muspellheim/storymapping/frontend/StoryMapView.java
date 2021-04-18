@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Objects;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ToolBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Priority;
@@ -37,6 +38,7 @@ public class StoryMapView extends VBox {
         Objects.requireNonNull(StoryMapView.class.getResource("icons/folder-open.png"))
             .toExternalForm();
     var openButton = new Button("", new ImageView(iconUrl));
+
     openButton.setOnAction(e -> handleOpen());
 
     var toolBar = new ToolBar(title, Spacer.newHSpacer(), openButton);
@@ -44,7 +46,8 @@ public class StoryMapView extends VBox {
 
     board = new Board();
     VBox.setVgrow(board, Priority.ALWAYS);
-    getChildren().add(board);
+    var scrolledBoard = new ScrollPane(board);
+    getChildren().add(scrolledBoard);
 
     viewModel = new StoryMapViewModel(messageHandling);
     viewModel.projectProperty().addListener(o -> updateBoard());
