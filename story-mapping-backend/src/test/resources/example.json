@@ -1,0 +1,78 @@
+
+{
+    "type": "Project",
+    "title": "Foobar",
+    "stories": [
+        {
+            "type": "Goal",
+            "id": "G1",
+            "title": "Foo",
+            "activities": [
+                {
+                    "type": "Activity",
+                    "id": "A1",
+                    "title": "Foo 1",
+                    "userStories": [
+                        {
+                            "type": "UserStory",
+                            "id": "U1",
+                            "title": "Lorem ipsum 1",
+                            "state": "OPEN"
+                        },
+                        {
+                            "type": "UserStory",
+                            "id": "U2",
+                            "title": "Lorem ipsum 2",
+                            "state": "OPEN"
+                        }
+                    ]
+                },
+                {
+                    "type": "Activity",
+                    "id": "A2",
+                    "title": "Foo 2",
+                    "userStories": [
+                        {
+                            "type": "UserStory",
+                            "id": "U3",
+                            "title": "Lorem ipsum 3",
+                            "state": "OPEN"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Goal",
+            "id": "G2",
+            "title": "Bar",
+            "activities": [
+                {
+                    "type": "Activity",
+                    "id": "A3",
+                    "title": "Bar 1",
+                    "userStories": [
+                        {
+                            "type": "UserStory",
+                            "id": "U4",
+                            "title": "Lorem ipsum 4",
+                            "state": "OPEN"
+                        },
+                        {
+                            "type": "UserStory",
+                            "id": "U5",
+                            "title": "Lorem ipsum 5",
+                            "state": "OPEN"
+                        },
+                        {
+                            "type": "UserStory",
+                            "id": "U6",
+                            "title": "Lorem ipsum 6",
+                            "state": "OPEN"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
