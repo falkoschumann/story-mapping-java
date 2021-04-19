@@ -31,7 +31,7 @@ public class StoryMapView extends VBox {
   private final StoryMapViewModel viewModel;
 
   public StoryMapView(MessageHandling messageHandling) {
-    title = new Label();
+    title = new Label("Story Mapping");
     title.setFont(new Font("Verdana", 24));
 
     var iconUrl =
@@ -45,8 +45,8 @@ public class StoryMapView extends VBox {
     getChildren().add(toolBar);
 
     board = new Board();
-    VBox.setVgrow(board, Priority.ALWAYS);
     var scrolledBoard = new ScrollPane(board);
+    VBox.setVgrow(scrolledBoard, Priority.ALWAYS);
     getChildren().add(scrolledBoard);
 
     viewModel = new StoryMapViewModel(messageHandling);
