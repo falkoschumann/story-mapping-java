@@ -10,22 +10,28 @@ import de.muspellheim.storymapping.contract.data.Activity;
 import de.muspellheim.storymapping.contract.data.Goal;
 import de.muspellheim.storymapping.contract.data.Story;
 import de.muspellheim.storymapping.contract.data.UserStory;
+import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
+import javafx.embed.swing.SwingFXUtils;
+import javafx.scene.SnapshotParameters;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ToolBar;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.WritableImage;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
+import javax.imageio.ImageIO;
 
 public class StoryMapView extends VBox {
   private final Label title;
+  private final Button exportImageButton;
   private final Board board;
 
   private final StoryMapViewModel viewModel;
@@ -41,7 +47,13 @@ public class StoryMapView extends VBox {
 
     openButton.setOnAction(e -> handleOpen());
 
-    var toolBar = new ToolBar(title, Spacer.newHSpacer(), openButton);
+    iconUrl =
+        Objects.requireNonNull(StoryMapView.class.getResource("icons/image.png")).toExternalForm();
+    exportImageButton = new Button("", new ImageView(iconUrl));
+    exportImageButton.setDisable(true);
+    exportImageButton.setOnAction(e -> handleExportImage());
+
+    var toolBar = new ToolBar(title, Spacer.newHSpacer(), openButton, exportImageButton);
     getChildren().add(toolBar);
 
     board = new Board();
@@ -67,7 +79,25 @@ public class StoryMapView extends VBox {
     viewModel.openFile(file.toPath());
   }
 
+  private void handleExportImage() {
+    var chooser = new FileChooser();
+    chooser.setTitle("Export Story Map as Image");
+    chooser.getExtensionFilters().add(new ExtensionFilter("Image (*.png)", "*.png"));
+    var file = chooser.showSaveDialog(getScene().getWindow());
+    if (file == null) {
+      return;
+    }
+
+    WritableImage image = board.snapshot(new SnapshotParameters(), null);
+    try {
+      ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", file);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+
   private void updateBoard() {
+    exportImageButton.setDisable(false);
     var project = viewModel.getBoard();
     title.setText(project.title());
     createAndPlaceCard(project.stories(), 0, 0);
