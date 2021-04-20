@@ -35,4 +35,4 @@
 
 * [ ] Schreibe optional eine Liste von Tasks für eine User Story
 * [ ] Kennzeichne den Zustand einer User Story (Ready, in Progress, Done)
-* [ ] Exportiere Kanban*Board mit Zustand als Spalten mit Tasks und User Stories als Swimlanes
+* [ ] Exportiere Kanban Board mit Zustand als Spalten mit Tasks und User Stories als Swimlanes

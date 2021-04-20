@@ -53,16 +53,15 @@ class CardSkin extends SkinBase<Card> {
       AnchorPane.setBottomAnchor(title, 16.0);
       switch (card.getState()) {
         case OPEN:
-        case CLOSED:
-          break;
-        case READY:
-          state.getStyleClass().add("ready");
           break;
         case IN_PROGRESS:
           state.getStyleClass().add("in-progress");
           break;
         case DONE:
           state.getStyleClass().add("done");
+          break;
+        case NEXT_ITERATION:
+          state.getStyleClass().add("next-ieration");
           break;
       }
     } else {

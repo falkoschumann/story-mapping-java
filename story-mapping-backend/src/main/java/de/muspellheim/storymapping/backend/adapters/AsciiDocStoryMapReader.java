@@ -56,7 +56,6 @@ public class AsciiDocStoryMapReader {
         var state = State.OPEN;
         if (title.startsWith("[ ] ")) {
           title = title.substring(4);
-          state = State.READY;
         } else if (title.startsWith("[x] ")) {
           title = title.substring(4);
           state = State.DONE;

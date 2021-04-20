@@ -24,14 +24,14 @@
   -fx-background-radius: 6px;
 }
 
-.card .state.ready {
-  -fx-background-color: orangered;
+.card .state.done {
+  -fx-background-color: yellowgreen;
 }
 
 .card .state.in-progress {
   -fx-background-color: gold;
 }
 
-.card .state.done {
-  -fx-background-color: yellowgreen;
+.card .state.next-iteration {
+  -fx-background-color: orangered;
 }

@@ -7,8 +7,7 @@ package de.muspellheim.storymapping.contract.data;
 
 public enum State {
   OPEN,
-  READY,
   IN_PROGRESS,
   DONE,
-  CLOSED
+  NEXT_ITERATION
 }
