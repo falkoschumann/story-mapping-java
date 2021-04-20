@@ -6,8 +6,19 @@
 package de.muspellheim.storymapping.contract.data;
 
 public enum State {
-  OPEN,
-  IN_PROGRESS,
-  DONE,
-  NEXT_ITERATION
+  OPEN("Open"),
+  IN_PROGRESS("In progress"),
+  DONE("Done"),
+  NEXT_ITERATION("Next iteration");
+
+  private final String title;
+
+  State(String title) {
+    this.title = title;
+  }
+
+  @Override
+  public String toString() {
+    return title;
+  }
 }
