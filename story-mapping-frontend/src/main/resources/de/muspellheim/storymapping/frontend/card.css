@@ -24,6 +24,10 @@
   -fx-background-radius: 6px;
 }
 
+.card .state.todo {
+  -fx-background-color: silver;
+}
+
 .card .state.done {
   -fx-background-color: yellowgreen;
 }

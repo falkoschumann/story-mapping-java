@@ -10,6 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import de.muspellheim.storymapping.contract.data.Activity;
 import de.muspellheim.storymapping.contract.data.Goal;
 import de.muspellheim.storymapping.contract.data.Project;
+import de.muspellheim.storymapping.contract.data.State;
 import de.muspellheim.storymapping.contract.data.UserStory;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -55,9 +56,12 @@ public class AsciiDocStoryMapRepositoryTest {
                         "A3",
                         "Foo 1",
                         List.of(
-                            new UserStory("U6", "Lorem ipsum 1"),
-                            new UserStory("U5", "Lorem ipsum 2"))),
-                    new Activity("A2", "Foo 2", List.of(new UserStory("U4", "Lorem ipsum 3"))))),
+                            new UserStory("U6", "Lorem ipsum 1", State.CONSTRAINT),
+                            new UserStory("U5", "Lorem ipsum 2", State.CONSTRAINT))),
+                    new Activity(
+                        "A2",
+                        "Foo 2",
+                        List.of(new UserStory("U4", "Lorem ipsum 3", State.CONSTRAINT))))),
             new Goal(
                 "G1",
                 "Bar",
@@ -66,8 +70,8 @@ public class AsciiDocStoryMapRepositoryTest {
                         "A1",
                         "Bar 1",
                         List.of(
-                            new UserStory("U3", "Lorem ipsum 4"),
-                            new UserStory("U2", "Lorem ipsum 5"),
-                            new UserStory("U1", "Lorem ipsum 6")))))));
+                            new UserStory("U3", "Lorem ipsum 4", State.CONSTRAINT),
+                            new UserStory("U2", "Lorem ipsum 5", State.CONSTRAINT),
+                            new UserStory("U1", "Lorem ipsum 6", State.CONSTRAINT)))))));
   }
 }

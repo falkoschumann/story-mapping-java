@@ -6,10 +6,11 @@
 package de.muspellheim.storymapping.contract.data;
 
 public enum State {
-  OPEN("Open"),
-  IN_PROGRESS("In progress"),
+  TODO("To Do"),
+  IN_PROGRESS("In Progress"),
   DONE("Done"),
-  NEXT_ITERATION("Next iteration");
+  NEXT_ITERATION("Next Iteration"),
+  CONSTRAINT("Constraint");
 
   private final String title;
 

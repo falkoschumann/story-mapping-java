@@ -7,6 +7,6 @@ package de.muspellheim.storymapping.contract.data;
 
 public record UserStory(String id, String title, State state) implements Story {
   public UserStory(String id, String title) {
-    this(id, title, State.OPEN);
+    this(id, title, null);
   }
 }
