@@ -14,14 +14,17 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
 import javafx.embed.swing.SwingFXUtils;
+import javafx.scene.Group;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.Slider;
 import javafx.scene.control.ToolBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
 import javafx.scene.layout.Priority;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -31,7 +34,9 @@ import javax.imageio.ImageIO;
 
 public class StoryMapView extends VBox {
   private final Label title;
+  private final Slider zoomSlider;
   private final Button exportImageButton;
+  private final StackPane stack;
   private final Board board;
 
   private final StoryMapViewModel viewModel;
@@ -47,22 +52,45 @@ public class StoryMapView extends VBox {
 
     openButton.setOnAction(e -> handleOpen());
 
+    zoomSlider = new Slider(1, 5, 3);
+    zoomSlider.setSnapToTicks(true);
+    zoomSlider.setMajorTickUnit(1);
+    zoomSlider.setMinorTickCount(0);
+    zoomSlider.valueProperty().addListener(o -> handleZoomChanged());
+
     iconUrl =
         Objects.requireNonNull(StoryMapView.class.getResource("icons/image.png")).toExternalForm();
     exportImageButton = new Button("", new ImageView(iconUrl));
     exportImageButton.setDisable(true);
     exportImageButton.setOnAction(e -> handleExportImage());
 
-    var toolBar = new ToolBar(title, Spacer.newHSpacer(), openButton, exportImageButton);
+    var toolBar =
+        new ToolBar(title, Spacer.newHSpacer(), zoomSlider, openButton, exportImageButton);
     getChildren().add(toolBar);
 
     board = new Board();
-    var scrolledBoard = new ScrollPane(board);
+    stack = new StackPane(board);
+    var scrolledBoard = new ScrollPane(new Group(stack));
     VBox.setVgrow(scrolledBoard, Priority.ALWAYS);
     getChildren().add(scrolledBoard);
 
     viewModel = new StoryMapViewModel(messageHandling);
     viewModel.projectProperty().addListener(o -> updateBoard());
+  }
+
+  private void handleZoomChanged() {
+    switch ((int) zoomSlider.getValue()) {
+      case 1 -> setZoom(0.5);
+      case 2 -> setZoom(0.75);
+      case 3 -> setZoom(1.0);
+      case 4 -> setZoom(1.25);
+      case 5 -> setZoom(1.5);
+    }
+  }
+
+  private void setZoom(double value) {
+    stack.setScaleX(value);
+    stack.setScaleY(value);
   }
 
   private void handleOpen() {
