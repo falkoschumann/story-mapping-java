@@ -7,7 +7,9 @@ package de.muspellheim.storymapping.backend.adapters;
 
 import de.muspellheim.storymapping.contract.data.Activity;
 import de.muspellheim.storymapping.contract.data.Goal;
+import de.muspellheim.storymapping.contract.data.Pain;
 import de.muspellheim.storymapping.contract.data.Project;
+import de.muspellheim.storymapping.contract.data.State;
 import de.muspellheim.storymapping.contract.data.Story;
 import de.muspellheim.storymapping.contract.data.UserStory;
 import java.io.IOException;
@@ -36,17 +38,41 @@ public class AsciiDocStoryMapWriter {
   }
 
   private void write(Story card) {
-    if (card instanceof Goal goalCard) {
+    if (card instanceof Goal goal) {
       lines.add("");
-      lines.add("== " + goalCard.title());
-      goalCard.activities().forEach(this::write);
-    } else if (card instanceof Activity activityCard) {
+      lines.add("== " + goal.title());
+      goal.activities().forEach(this::write);
+    } else if (card instanceof Activity activity) {
       lines.add("");
-      lines.add("=== " + activityCard.title());
+      lines.add("=== " + activity.title());
       lines.add("");
-      activityCard.userStories().forEach(this::write);
-    } else if (card instanceof UserStory userStoryCard) {
-      lines.add("* " + userStoryCard.title());
+      activity.userStories().forEach(this::write);
+    } else if (card instanceof UserStory userStory) {
+      String prefix = getPrefix(userStory.state());
+      String teamMember = getTeamMember(userStory.teamMember());
+      lines.add("* " + prefix + teamMember + userStory.title());
+    } else if (card instanceof Pain pain) {
+      String prefix = getPrefix(pain.state()) + "[Pain] ";
+      String teamMember = getTeamMember(pain.teamMember());
+      lines.add("* " + prefix + teamMember + pain.title());
     }
+  }
+
+  private String getPrefix(State state) {
+    var prefix = "";
+    if (state != null) {
+      prefix =
+          switch (state) {
+            case TODO, IN_PROGRESS -> "[ ] ";
+            case DONE -> "[x] ";
+            case CONSTRAINT -> "[Constraint] ";
+            default -> "";
+          };
+    }
+    return prefix;
+  }
+
+  private String getTeamMember(String teamMember) {
+    return teamMember != null ? "(" + teamMember + ") " : "";
   }
 }

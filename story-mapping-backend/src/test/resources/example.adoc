@@ -5,17 +5,23 @@
 
 === Foo 1
 
-* Lorem ipsum 1
-* Lorem ipsum 2
+* [ ] Lorem ipsum 1
+* [x] Lorem ipsum 2
+* [ ] (FS) Lorem ipsum 3
+* [x] (FS) Lorem ipsum 4
+* [ ] [Pain] Lorem ipsum 5
+* [x] [Pain] Lorem ipsum 6
+* [ ] [Pain] (FS) Lorem ipsum 7
+* [x] [Pain] (FS) Lorem ipsum 8
 
 === Foo 2
 
-* Lorem ipsum 3
+* Lorem ipsum
 
 == Bar
 
 === Bar 1
 
-* Lorem ipsum 4
-* Lorem ipsum 5
-* Lorem ipsum 6
+* Lorem ipsum A
+* [Constraint] Lorem ipsum B
+* [Pain] Lorem ipsum C

@@ -39,3 +39,12 @@
 .card .state.next-iteration {
   -fx-background-color: orangered;
 }
+
+.card .constraint {
+  -fx-font-size: 10px;
+  -fx-font-style: italic;
+}
+
+.card .team-member {
+  -fx-font-size: 10px;
+}

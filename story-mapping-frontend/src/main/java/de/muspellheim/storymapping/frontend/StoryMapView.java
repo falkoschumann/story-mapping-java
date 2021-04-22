@@ -8,6 +8,7 @@ package de.muspellheim.storymapping.frontend;
 import de.muspellheim.storymapping.contract.MessageHandling;
 import de.muspellheim.storymapping.contract.data.Activity;
 import de.muspellheim.storymapping.contract.data.Goal;
+import de.muspellheim.storymapping.contract.data.Pain;
 import de.muspellheim.storymapping.contract.data.Story;
 import de.muspellheim.storymapping.contract.data.UserStory;
 import java.io.IOException;
@@ -21,6 +22,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Slider;
 import javafx.scene.control.ToolBar;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
 import javafx.scene.layout.Priority;
@@ -145,19 +147,30 @@ public class StoryMapView extends VBox {
       card.setColumn(column);
       card.setRow(row);
       board.getCards().add(card);
-      if (story instanceof Goal goalCard) {
+      if (story instanceof Goal goal) {
         card.setColor(Color.LIGHTSKYBLUE);
-        createAndPlaceCard(goalCard.activities(), column, row + 1);
-        column += goalCard.activities().size();
-      }
-      if (story instanceof Activity activityCard) {
+        createAndPlaceCard(goal.activities(), column, row + 1);
+        column += goal.activities().size();
+      } else if (story instanceof Activity activity) {
         card.setColor(Color.LIGHTGREEN);
-        createAndPlaceCard(activityCard.userStories(), column, row + 1);
+        createAndPlaceCard(activity.userStories(), column, row + 1);
         column++;
-      }
-      if (story instanceof UserStory userStoryCard) {
+      } else if (story instanceof UserStory userStory) {
         card.setColor(Color.LIGHTGOLDENRODYELLOW);
-        card.setState(userStoryCard.state());
+        card.setState(userStory.state());
+        card.setTeamMember(userStory.teamMember());
+        var tooltipPrefix = card.getState() != null ? "[" + card.getState() + "] " : "";
+        var tooltip = new Tooltip(tooltipPrefix + card.getTitle());
+        card.setTooltip(tooltip);
+        row++;
+      } else if (story instanceof Pain pain) {
+        card.setColor(Color.LIGHTCORAL);
+        card.setState(pain.state());
+        card.setTeamMember(pain.teamMember());
+        var tooltipPrefix =
+            card.getState() != null ? "[Pain, " + card.getState() + "] " : "[Pain] ";
+        var tooltip = new Tooltip(tooltipPrefix + card.getTitle());
+        card.setTooltip(tooltip);
         row++;
       }
     }

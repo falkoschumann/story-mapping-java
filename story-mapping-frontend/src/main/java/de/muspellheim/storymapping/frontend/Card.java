@@ -23,6 +23,7 @@ public class Card extends Control {
   private final IntegerProperty row = new SimpleIntegerProperty(this, "row");
   private final ObjectProperty<Color> color = new SimpleObjectProperty<>(this, "color");
   private final ObjectProperty<State> state = new SimpleObjectProperty<>(this, "state");
+  private final StringProperty teamMember = new SimpleStringProperty(this, "teamMember");
 
   public Card() {
     initialize();
@@ -90,6 +91,18 @@ public class Card extends Control {
 
   public final void setState(State state) {
     this.state.set(state);
+  }
+
+  public StringProperty teamMemberProperty() {
+    return teamMember;
+  }
+
+  public String getTeamMember() {
+    return teamMember.get();
+  }
+
+  public void setTeamMember(String teamMember) {
+    this.teamMember.set(teamMember);
   }
 
   @Override

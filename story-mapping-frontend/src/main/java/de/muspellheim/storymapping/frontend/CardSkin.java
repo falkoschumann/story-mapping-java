@@ -7,7 +7,6 @@ package de.muspellheim.storymapping.frontend;
 
 import javafx.scene.control.Label;
 import javafx.scene.control.SkinBase;
-import javafx.scene.control.Tooltip;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
@@ -17,7 +16,8 @@ class CardSkin extends SkinBase<Card> {
   private final AnchorPane anchorPane;
   private final Label title;
   private final Region state;
-  private final Tooltip tooltip;
+  private final Label constraint;
+  private final Label teamMember;
 
   protected CardSkin(Card control) {
     super(control);
@@ -39,8 +39,17 @@ class CardSkin extends SkinBase<Card> {
     AnchorPane.setLeftAnchor(state, 4.0);
     anchorPane.getChildren().add(state);
 
-    tooltip = new Tooltip();
-    control.setTooltip(tooltip);
+    constraint = new Label();
+    constraint.getStyleClass().add("constraint");
+    AnchorPane.setBottomAnchor(constraint, 4.0);
+    AnchorPane.setLeftAnchor(constraint, 8.0);
+    anchorPane.getChildren().add(constraint);
+
+    teamMember = new Label();
+    teamMember.getStyleClass().add("team-member");
+    AnchorPane.setBottomAnchor(teamMember, 4.0);
+    AnchorPane.setLeftAnchor(teamMember, 19.0);
+    anchorPane.getChildren().add(teamMember);
 
     registerChangeListener(control.titleProperty(), o -> updateChildren());
     registerChangeListener(control.colorProperty(), o -> updateChildren());
@@ -54,27 +63,22 @@ class CardSkin extends SkinBase<Card> {
     title.setText(card.getTitle());
     anchorPane.setBackground(new Background(new BackgroundFill(card.getColor(), null, null)));
 
-    if (card.getState() != null) {
+    if (card.getState() != null || card.getTeamMember() != null) {
       AnchorPane.setBottomAnchor(title, 16.0);
-      switch (card.getState()) {
-        case TODO:
-          state.getStyleClass().add("todo");
-          break;
-        case IN_PROGRESS:
-          state.getStyleClass().add("in-progress");
-          break;
-        case DONE:
-          state.getStyleClass().add("done");
-          break;
-        case NEXT_ITERATION:
-          state.getStyleClass().add("next-iteration");
-          break;
-      }
     } else {
       AnchorPane.setBottomAnchor(title, 8.0);
     }
 
-    var tooltipPrefix = card.getState() != null ? "[" + card.getState() + "] " : "";
-    tooltip.setText(tooltipPrefix + card.getTitle());
+    if (card.getState() != null) {
+      switch (card.getState()) {
+        case TODO -> state.getStyleClass().add("todo");
+        case IN_PROGRESS -> state.getStyleClass().add("in-progress");
+        case DONE -> state.getStyleClass().add("done");
+        case NEXT_ITERATION -> state.getStyleClass().add("next-iteration");
+        case CONSTRAINT -> constraint.setText("Constraint");
+      }
+    }
+
+    teamMember.setText(card.getTeamMember());
   }
 }
