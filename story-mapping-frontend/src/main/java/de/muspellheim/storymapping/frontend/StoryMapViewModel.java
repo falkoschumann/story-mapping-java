@@ -18,6 +18,8 @@ public class StoryMapViewModel {
 
   private final MessageHandling messageHandling;
 
+  private Path projectFile;
+
   public StoryMapViewModel(MessageHandling messageHandling) {
     this.messageHandling = messageHandling;
   }
@@ -36,7 +38,12 @@ public class StoryMapViewModel {
   }
 
   public void openFile(Path file) {
-    messageHandling.handle(new OpenFileCommand(file));
+    projectFile = file;
+    refresh();
+  }
+
+  public void refresh() {
+    messageHandling.handle(new OpenFileCommand(projectFile));
     var result = messageHandling.handle(new GetBoardQuery());
     project.set(result.board());
   }

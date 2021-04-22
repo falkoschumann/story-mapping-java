@@ -35,6 +35,7 @@ import javax.imageio.ImageIO;
 public class StoryMapView extends VBox {
   private final Label title;
   private final Slider zoomSlider;
+  private final Button refreshButton;
   private final Button exportImageButton;
   private final StackPane stack;
   private final Board board;
@@ -60,13 +61,21 @@ public class StoryMapView extends VBox {
     zoomSlider.valueProperty().addListener(o -> handleZoomChanged());
 
     iconUrl =
+        Objects.requireNonNull(StoryMapView.class.getResource("icons/refresh.png"))
+            .toExternalForm();
+    refreshButton = new Button("", new ImageView(iconUrl));
+    refreshButton.setDisable(true);
+    refreshButton.setOnAction(e -> handleRefresh());
+
+    iconUrl =
         Objects.requireNonNull(StoryMapView.class.getResource("icons/image.png")).toExternalForm();
     exportImageButton = new Button("", new ImageView(iconUrl));
     exportImageButton.setDisable(true);
     exportImageButton.setOnAction(e -> handleExportImage());
 
     var toolBar =
-        new ToolBar(title, Spacer.newHSpacer(), zoomSlider, openButton, exportImageButton);
+        new ToolBar(
+            title, Spacer.newHSpacer(), zoomSlider, openButton, refreshButton, exportImageButton);
     getChildren().add(toolBar);
 
     board = new Board();
@@ -99,6 +108,10 @@ public class StoryMapView extends VBox {
     viewModel.openFile(file.toPath());
   }
 
+  private void handleRefresh() {
+    viewModel.refresh();
+  }
+
   private void handleExportImage() {
     var chooser = new FileChooser();
     chooser.setTitle("Export Story Map as Image");
@@ -118,6 +131,7 @@ public class StoryMapView extends VBox {
 
   private void updateBoard() {
     zoomSlider.setDisable(false);
+    refreshButton.setDisable(false);
     exportImageButton.setDisable(false);
     var project = viewModel.getBoard();
     title.setText(project.title());
