@@ -52,10 +52,11 @@ public class StoryMapView extends VBox {
 
     openButton.setOnAction(e -> handleOpen());
 
-    zoomSlider = new Slider(1, 5, 3);
+    zoomSlider = new Slider(0.5, 1.5, 1.0);
+    zoomSlider.setDisable(true);
     zoomSlider.setSnapToTicks(true);
-    zoomSlider.setMajorTickUnit(1);
-    zoomSlider.setMinorTickCount(0);
+    zoomSlider.setMajorTickUnit(0.5);
+    zoomSlider.setMinorTickCount(4);
     zoomSlider.valueProperty().addListener(o -> handleZoomChanged());
 
     iconUrl =
@@ -79,16 +80,7 @@ public class StoryMapView extends VBox {
   }
 
   private void handleZoomChanged() {
-    switch ((int) zoomSlider.getValue()) {
-      case 1 -> setZoom(0.5);
-      case 2 -> setZoom(0.75);
-      case 3 -> setZoom(1.0);
-      case 4 -> setZoom(1.25);
-      case 5 -> setZoom(1.5);
-    }
-  }
-
-  private void setZoom(double value) {
+    var value = zoomSlider.getValue();
     stack.setScaleX(value);
     stack.setScaleY(value);
   }
@@ -125,6 +117,7 @@ public class StoryMapView extends VBox {
   }
 
   private void updateBoard() {
+    zoomSlider.setDisable(false);
     exportImageButton.setDisable(false);
     var project = viewModel.getBoard();
     title.setText(project.title());
