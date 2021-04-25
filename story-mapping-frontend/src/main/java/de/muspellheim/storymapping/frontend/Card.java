@@ -17,10 +17,11 @@ import javafx.scene.control.Skin;
 import javafx.scene.paint.Color;
 
 public class Card extends Control {
-  private final StringProperty title = new SimpleStringProperty();
+  private final StringProperty title = new SimpleStringProperty("");
   private final IntegerProperty column = new SimpleIntegerProperty();
   private final IntegerProperty row = new SimpleIntegerProperty();
-  private final ObjectProperty<Color> backgroundColor = new SimpleObjectProperty<>();
+  private final ObjectProperty<Color> Color = new SimpleObjectProperty<>();
+  private final StringProperty stateName = new SimpleStringProperty("");
   private final ObjectProperty<Color> stateColor = new SimpleObjectProperty<>();
 
   public Card() {
@@ -67,16 +68,28 @@ public class Card extends Control {
     this.row.set(value);
   }
 
-  public final Color getBackgroundColor() {
-    return backgroundColor.get();
+  public final Color getColor() {
+    return Color.get();
   }
 
-  public final ObjectProperty<Color> backgroundColorProperty() {
-    return backgroundColor;
+  public final ObjectProperty<Color> colorProperty() {
+    return Color;
   }
 
-  public final void setBackgroundColor(Color value) {
-    this.backgroundColor.set(value);
+  public final void setColor(Color value) {
+    this.Color.set(value);
+  }
+
+  public StringProperty stateNameProperty() {
+    return stateName;
+  }
+
+  public String getStateName() {
+    return stateName.get();
+  }
+
+  public void setStateName(String value) {
+    this.stateName.set(value);
   }
 
   public final ObjectProperty<Color> stateColorProperty() {

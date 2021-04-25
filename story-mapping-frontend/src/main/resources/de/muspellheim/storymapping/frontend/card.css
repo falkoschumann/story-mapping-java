@@ -8,22 +8,21 @@
 
   -fx-effect: dropshadow(gaussian, gray, 5, 0.25, 2, 2);
 
-  -fx-text-fill: #2e3032; /* RAL 9004 Signalschwarz */
-  -fx-font-family: Verdana;
-  -fx-font-size: 12px;
 }
 
 .card .title {
   -fx-alignment: top-left;
+  -fx-text-fill: #2e3032; /* RAL 9004 Signalschwarz */
+  -fx-font-size: 12px;
   -fx-wrap-text: true;
 }
 
 .card .state {
-  -fx-pref-width: 12px;
+  -fx-min-width: 12px;
   -fx-pref-height: 12px;
-}
-
-.card .constraint {
-  -fx-font-size: 10px;
-  -fx-font-style: italic;
+  -fx-padding: 0 6px 0 6px;
+  -fx-text-fill: ghostwhite;
+  -fx-font-family: Verdana;
+  -fx-font-size: 9px;
+  -fx-font-weight: bold;
 }

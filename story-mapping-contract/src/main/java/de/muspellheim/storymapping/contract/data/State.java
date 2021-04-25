@@ -6,9 +6,10 @@
 package de.muspellheim.storymapping.contract.data;
 
 public enum State {
-  TODO("To Do"),
+  TODO("Todo"),
+  DOING("Doing"),
   DONE("Done"),
-  UNKNOWN("-");
+  EMPTY("");
 
   private final String title;
 

@@ -62,7 +62,7 @@ public class JsonStoryMapWriter {
         o.add("type", "UserStory");
         o.add("id", userStory.id());
         o.add("title", userStory.title());
-        if (userStory.state() != State.UNKNOWN) {
+        if (userStory.state() != State.EMPTY) {
           o.add("state", userStory.state().name());
         }
         a.add(o);

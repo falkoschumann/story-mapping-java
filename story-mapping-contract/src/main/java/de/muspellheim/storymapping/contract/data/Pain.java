@@ -7,6 +7,6 @@ package de.muspellheim.storymapping.contract.data;
 
 public record Pain(String id, String title, State state) implements Story {
   public Pain(String id, String title) {
-    this(id, title, State.UNKNOWN);
+    this(id, title, State.EMPTY);
   }
 }

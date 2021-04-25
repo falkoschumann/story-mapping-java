@@ -54,7 +54,7 @@ public class AsciiDocStoryMapReader {
         userStories.clear();
       } else if (line.startsWith("* ")) {
         var title = line.substring(2);
-        State state = State.UNKNOWN;
+        State state = State.EMPTY;
         if (title.startsWith("[ ] ")) {
           title = title.substring(4);
           state = State.TODO;

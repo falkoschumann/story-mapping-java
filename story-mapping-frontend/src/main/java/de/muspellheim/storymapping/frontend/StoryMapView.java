@@ -48,6 +48,7 @@ public class StoryMapView extends VBox {
   public StoryMapView(MessageHandling messageHandling) {
     title = new Label("Story Mapping");
     title.setFont(new Font("Verdana", 24));
+    title.setTextFill(Color.web("#2e3032"));
 
     var iconUrl =
         Objects.requireNonNull(StoryMapView.class.getResource("icons/folder-open.png"))
@@ -149,25 +150,27 @@ public class StoryMapView extends VBox {
       card.setRow(row);
       board.getCards().add(card);
       if (story instanceof Goal goal) {
-        card.setBackgroundColor(Color.LIGHTSKYBLUE);
+        card.setColor(Color.LIGHTSKYBLUE);
         createAndPlaceCard(goal.activities(), column, row + 1);
         column += goal.activities().size();
       } else if (story instanceof Activity activity) {
-        card.setBackgroundColor(Color.LIGHTGREEN);
+        card.setColor(Color.LIGHTGREEN);
         createAndPlaceCard(activity.userStories(), column, row + 1);
         column++;
       } else if (story instanceof UserStory userStory) {
-        card.setBackgroundColor(Color.LIGHTGOLDENRODYELLOW);
+        card.setColor(Color.LIGHTGOLDENRODYELLOW);
+        card.setStateName(userStory.state().toString());
         card.setStateColor(getStateColor(userStory.state()));
-        var tooltipPrefix = card.getStateColor() != null ? "[" + card.getStateColor() + "] " : "";
+        var tooltipPrefix = card.getStateName() != null ? "[" + card.getStateName() + "] " : "";
         var tooltip = new Tooltip(tooltipPrefix + card.getTitle());
         card.setTooltip(tooltip);
         row++;
       } else if (story instanceof Pain pain) {
-        card.setBackgroundColor(Color.LIGHTCORAL);
+        card.setColor(Color.LIGHTCORAL);
+        card.setStateName(pain.state().toString());
         card.setStateColor(getStateColor(pain.state()));
         var tooltipPrefix =
-            card.getStateColor() != null ? "[Pain, " + card.getStateColor() + "] " : "[Pain] ";
+            card.getStateName() != null ? "[Pain, " + card.getStateName() + "] " : "[Pain] ";
         var tooltip = new Tooltip(tooltipPrefix + card.getTitle());
         card.setTooltip(tooltip);
         row++;
@@ -178,8 +181,9 @@ public class StoryMapView extends VBox {
   private Color getStateColor(State state) {
     return switch (state) {
       case TODO -> Color.SILVER;
+      case DOING -> Color.DODGERBLUE;
       case DONE -> Color.YELLOWGREEN;
-      case UNKNOWN -> null;
+      case EMPTY -> null;
     };
   }
 

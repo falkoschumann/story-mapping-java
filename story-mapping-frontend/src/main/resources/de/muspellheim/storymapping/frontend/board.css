@@ -8,13 +8,6 @@
   -fx-spacing: 10px;
 }
 
-.board .title {
-  -fx-text-fill: #2e3032; /* RAL 9004 Signalschwarz */
-  -fx-font-family: Verdana;
-  -fx-font-size: 24px;
-  -fx-font-weight: bold;
-}
-
 .board GridPane {
   -fx-hgap: 10px;
   -fx-vgap: 10px;

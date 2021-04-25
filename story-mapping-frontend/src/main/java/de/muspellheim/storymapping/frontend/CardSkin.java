@@ -11,13 +11,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
-import javafx.scene.layout.Region;
 
 class CardSkin extends SkinBase<Card> {
   private final AnchorPane anchorPane;
   private final Label title;
-  private final Region state;
-  private final Label constraint;
+  private final Label state;
 
   protected CardSkin(Card control) {
     super(control);
@@ -33,20 +31,14 @@ class CardSkin extends SkinBase<Card> {
     AnchorPane.setLeftAnchor(title, 8.0);
     anchorPane.getChildren().add(title);
 
-    state = new Region();
+    state = new Label();
     state.getStyleClass().add("state");
     AnchorPane.setBottomAnchor(state, 4.0);
     AnchorPane.setLeftAnchor(state, 4.0);
     anchorPane.getChildren().add(state);
 
-    constraint = new Label();
-    constraint.getStyleClass().add("constraint");
-    AnchorPane.setBottomAnchor(constraint, 4.0);
-    AnchorPane.setLeftAnchor(constraint, 8.0);
-    anchorPane.getChildren().add(constraint);
-
     registerChangeListener(control.titleProperty(), o -> updateChildren());
-    registerChangeListener(control.backgroundColorProperty(), o -> updateChildren());
+    registerChangeListener(control.colorProperty(), o -> updateChildren());
     registerChangeListener(control.stateColorProperty(), o -> updateChildren());
     updateChildren();
   }
@@ -55,9 +47,9 @@ class CardSkin extends SkinBase<Card> {
     var card = getSkinnable();
 
     title.setText(card.getTitle());
-    anchorPane.setBackground(
-        new Background(new BackgroundFill(card.getBackgroundColor(), null, null)));
+    anchorPane.setBackground(new Background(new BackgroundFill(card.getColor(), null, null)));
 
+    state.setText(card.getStateName().toUpperCase());
     if (card.getStateColor() != null) {
       AnchorPane.setBottomAnchor(title, 16.0);
       state.setBackground(
