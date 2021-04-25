@@ -1,3 +1,8 @@
+/*
+ * Story Mapping - Backend
+ * Copyright (c) 2021 Falko Schumann <falko.schumann@muspellheim.de>
+ */
+
 package de.muspellheim.storymapping.backend.adapters;
 
 import de.muspellheim.storymapping.backend.StoryMapRepository;
