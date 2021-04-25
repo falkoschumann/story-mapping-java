@@ -9,6 +9,7 @@ import de.muspellheim.storymapping.contract.MessageHandling;
 import de.muspellheim.storymapping.contract.data.Activity;
 import de.muspellheim.storymapping.contract.data.Goal;
 import de.muspellheim.storymapping.contract.data.Pain;
+import de.muspellheim.storymapping.contract.data.State;
 import de.muspellheim.storymapping.contract.data.Story;
 import de.muspellheim.storymapping.contract.data.UserStory;
 import java.io.IOException;
@@ -148,32 +149,38 @@ public class StoryMapView extends VBox {
       card.setRow(row);
       board.getCards().add(card);
       if (story instanceof Goal goal) {
-        card.setColor(Color.LIGHTSKYBLUE);
+        card.setBackgroundColor(Color.LIGHTSKYBLUE);
         createAndPlaceCard(goal.activities(), column, row + 1);
         column += goal.activities().size();
       } else if (story instanceof Activity activity) {
-        card.setColor(Color.LIGHTGREEN);
+        card.setBackgroundColor(Color.LIGHTGREEN);
         createAndPlaceCard(activity.userStories(), column, row + 1);
         column++;
       } else if (story instanceof UserStory userStory) {
-        card.setColor(Color.LIGHTGOLDENRODYELLOW);
-        card.setState(userStory.state());
-        card.setTeamMember(userStory.teamMember());
-        var tooltipPrefix = card.getState() != null ? "[" + card.getState() + "] " : "";
+        card.setBackgroundColor(Color.LIGHTGOLDENRODYELLOW);
+        card.setStateColor(getStateColor(userStory.state()));
+        var tooltipPrefix = card.getStateColor() != null ? "[" + card.getStateColor() + "] " : "";
         var tooltip = new Tooltip(tooltipPrefix + card.getTitle());
         card.setTooltip(tooltip);
         row++;
       } else if (story instanceof Pain pain) {
-        card.setColor(Color.LIGHTCORAL);
-        card.setState(pain.state());
-        card.setTeamMember(pain.teamMember());
+        card.setBackgroundColor(Color.LIGHTCORAL);
+        card.setStateColor(getStateColor(pain.state()));
         var tooltipPrefix =
-            card.getState() != null ? "[Pain, " + card.getState() + "] " : "[Pain] ";
+            card.getStateColor() != null ? "[Pain, " + card.getStateColor() + "] " : "[Pain] ";
         var tooltip = new Tooltip(tooltipPrefix + card.getTitle());
         card.setTooltip(tooltip);
         row++;
       }
     }
+  }
+
+  private Color getStateColor(State state) {
+    return switch (state) {
+      case TODO -> Color.SILVER;
+      case DONE -> Color.YELLOWGREEN;
+      case UNKNOWN -> null;
+    };
   }
 
   public void run() {

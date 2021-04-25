@@ -61,7 +61,8 @@ public class JsonStoryMapReader {
   private UserStory readUserStory(JsonObject o) {
     var id = o.getString("id");
     var title = o.getString("title");
-    var state = State.valueOf(o.getString("state"));
+    var jsonState = o.getJsonString("state");
+    var state = jsonState != null ? State.valueOf(jsonState.getString()) : State.UNKNOWN;
     return new UserStory(id, title, state);
   }
 

@@ -57,9 +57,8 @@ public class JsonStoryMapRepositoryTest {
                         "Foo 1",
                         List.of(
                             new UserStory("U1", "Lorem ipsum 1", State.TODO),
-                            new UserStory("U2", "Lorem ipsum 2", State.TODO))),
-                    new Activity(
-                        "A2", "Foo 2", List.of(new UserStory("U3", "Lorem ipsum 3", State.TODO))))),
+                            new UserStory("U2", "Lorem ipsum 2", State.DONE))),
+                    new Activity("A2", "Foo 2", List.of(new UserStory("U3", "Lorem ipsum"))))),
             new Goal(
                 "G2",
                 "Bar",
@@ -68,8 +67,8 @@ public class JsonStoryMapRepositoryTest {
                         "A3",
                         "Bar 1",
                         List.of(
-                            new UserStory("U4", "Lorem ipsum 4", State.TODO),
-                            new UserStory("U5", "Lorem ipsum 5", State.TODO),
-                            new UserStory("U6", "Lorem ipsum 6", State.TODO)))))));
+                            new UserStory("U4", "Lorem ipsum A"),
+                            new UserStory("U5", "Lorem ipsum B"),
+                            new UserStory("U6", "Lorem ipsum C")))))));
   }
 }

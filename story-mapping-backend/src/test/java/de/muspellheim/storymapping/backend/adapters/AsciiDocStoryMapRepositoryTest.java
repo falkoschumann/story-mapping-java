@@ -10,7 +10,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import de.muspellheim.storymapping.contract.data.Activity;
 import de.muspellheim.storymapping.contract.data.Goal;
-import de.muspellheim.storymapping.contract.data.Pain;
 import de.muspellheim.storymapping.contract.data.Project;
 import de.muspellheim.storymapping.contract.data.State;
 import de.muspellheim.storymapping.contract.data.UserStory;
@@ -65,15 +64,9 @@ public class AsciiDocStoryMapRepositoryTest {
                         "A3",
                         "Foo 1",
                         List.of(
-                            new UserStory("U7", "Lorem ipsum 1", State.TODO),
-                            new UserStory("U6", "Lorem ipsum 2", State.DONE),
-                            new UserStory("U5", "Lorem ipsum 3", State.IN_PROGRESS, "FS"),
-                            new UserStory("U4", "Lorem ipsum 4", State.DONE, "FS"),
-                            new Pain("P5", "Lorem ipsum 5", State.TODO),
-                            new Pain("P4", "Lorem ipsum 6", State.DONE),
-                            new Pain("P3", "Lorem ipsum 7", State.IN_PROGRESS, "FS"),
-                            new Pain("P2", "Lorem ipsum 8", State.DONE, "FS"))),
-                    new Activity("A2", "Foo 2", List.of(new UserStory("U3", "Lorem ipsum"))))),
+                            new UserStory("U6", "Lorem ipsum 1", State.TODO),
+                            new UserStory("U5", "Lorem ipsum 2", State.DONE))),
+                    new Activity("A2", "Foo 2", List.of(new UserStory("U4", "Lorem ipsum"))))),
             new Goal(
                 "G1",
                 "Bar",
@@ -82,8 +75,8 @@ public class AsciiDocStoryMapRepositoryTest {
                         "A1",
                         "Bar 1",
                         List.of(
-                            new UserStory("U2", "Lorem ipsum A"),
-                            new UserStory("U1", "Lorem ipsum B", State.CONSTRAINT),
-                            new Pain("P1", "Lorem ipsum C")))))));
+                            new UserStory("U3", "Lorem ipsum A"),
+                            new UserStory("U2", "Lorem ipsum B"),
+                            new UserStory("U1", "Lorem ipsum C")))))));
   }
 }

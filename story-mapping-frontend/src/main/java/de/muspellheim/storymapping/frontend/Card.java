@@ -5,7 +5,6 @@
 
 package de.muspellheim.storymapping.frontend;
 
-import de.muspellheim.storymapping.contract.data.State;
 import java.util.Objects;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;
@@ -18,12 +17,11 @@ import javafx.scene.control.Skin;
 import javafx.scene.paint.Color;
 
 public class Card extends Control {
-  private final StringProperty title = new SimpleStringProperty(this, "title");
-  private final IntegerProperty column = new SimpleIntegerProperty(this, "column");
-  private final IntegerProperty row = new SimpleIntegerProperty(this, "row");
-  private final ObjectProperty<Color> color = new SimpleObjectProperty<>(this, "color");
-  private final ObjectProperty<State> state = new SimpleObjectProperty<>(this, "state");
-  private final StringProperty teamMember = new SimpleStringProperty(this, "teamMember");
+  private final StringProperty title = new SimpleStringProperty();
+  private final IntegerProperty column = new SimpleIntegerProperty();
+  private final IntegerProperty row = new SimpleIntegerProperty();
+  private final ObjectProperty<Color> backgroundColor = new SimpleObjectProperty<>();
+  private final ObjectProperty<Color> stateColor = new SimpleObjectProperty<>();
 
   public Card() {
     initialize();
@@ -41,8 +39,8 @@ public class Card extends Control {
     return title.get();
   }
 
-  public final void setTitle(String title) {
-    this.title.set(title);
+  public final void setTitle(String value) {
+    this.title.set(value);
   }
 
   public IntegerProperty columnProperty() {
@@ -53,8 +51,8 @@ public class Card extends Control {
     return column.get();
   }
 
-  public void setColumn(int column) {
-    this.column.set(column);
+  public void setColumn(int value) {
+    this.column.set(value);
   }
 
   public IntegerProperty rowProperty() {
@@ -65,44 +63,32 @@ public class Card extends Control {
     return row.get();
   }
 
-  public void setRow(int row) {
-    this.row.set(row);
+  public void setRow(int value) {
+    this.row.set(value);
   }
 
-  public final Color getColor() {
-    return color.get();
+  public final Color getBackgroundColor() {
+    return backgroundColor.get();
   }
 
-  public final ObjectProperty<Color> colorProperty() {
-    return color;
+  public final ObjectProperty<Color> backgroundColorProperty() {
+    return backgroundColor;
   }
 
-  public final void setColor(Color color) {
-    this.color.set(color);
+  public final void setBackgroundColor(Color value) {
+    this.backgroundColor.set(value);
   }
 
-  public final ObjectProperty<State> stateProperty() {
-    return state;
+  public final ObjectProperty<Color> stateColorProperty() {
+    return stateColor;
   }
 
-  public final State getState() {
-    return state.get();
+  public final Color getStateColor() {
+    return stateColor.get();
   }
 
-  public final void setState(State state) {
-    this.state.set(state);
-  }
-
-  public StringProperty teamMemberProperty() {
-    return teamMember;
-  }
-
-  public String getTeamMember() {
-    return teamMember.get();
-  }
-
-  public void setTeamMember(String teamMember) {
-    this.teamMember.set(teamMember);
+  public final void setStateColor(Color value) {
+    this.stateColor.set(value);
   }
 
   @Override

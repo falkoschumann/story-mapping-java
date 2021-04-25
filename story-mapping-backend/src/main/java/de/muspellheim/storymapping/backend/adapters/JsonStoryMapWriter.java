@@ -8,6 +8,7 @@ package de.muspellheim.storymapping.backend.adapters;
 import de.muspellheim.storymapping.contract.data.Activity;
 import de.muspellheim.storymapping.contract.data.Goal;
 import de.muspellheim.storymapping.contract.data.Project;
+import de.muspellheim.storymapping.contract.data.State;
 import de.muspellheim.storymapping.contract.data.Story;
 import de.muspellheim.storymapping.contract.data.UserStory;
 import jakarta.json.Json;
@@ -61,7 +62,9 @@ public class JsonStoryMapWriter {
         o.add("type", "UserStory");
         o.add("id", userStory.id());
         o.add("title", userStory.title());
-        o.add("state", userStory.state().name());
+        if (userStory.state() != State.UNKNOWN) {
+          o.add("state", userStory.state().name());
+        }
         a.add(o);
       }
     }

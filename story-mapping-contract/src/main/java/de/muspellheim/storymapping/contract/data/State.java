@@ -7,10 +7,8 @@ package de.muspellheim.storymapping.contract.data;
 
 public enum State {
   TODO("To Do"),
-  IN_PROGRESS("In Progress"),
   DONE("Done"),
-  NEXT_ITERATION("Next Iteration"),
-  CONSTRAINT("Constraint");
+  UNKNOWN("-");
 
   private final String title;
 

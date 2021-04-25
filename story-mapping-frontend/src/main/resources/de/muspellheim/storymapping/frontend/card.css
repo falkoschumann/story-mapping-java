@@ -21,30 +21,9 @@
 .card .state {
   -fx-pref-width: 12px;
   -fx-pref-height: 12px;
-  -fx-background-radius: 6px;
-}
-
-.card .state.todo {
-  -fx-background-color: silver;
-}
-
-.card .state.done {
-  -fx-background-color: yellowgreen;
-}
-
-.card .state.in-progress {
-  -fx-background-color: gold;
-}
-
-.card .state.next-iteration {
-  -fx-background-color: orangered;
 }
 
 .card .constraint {
   -fx-font-size: 10px;
   -fx-font-style: italic;
-}
-
-.card .team-member {
-  -fx-font-size: 10px;
 }

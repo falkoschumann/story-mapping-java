@@ -22,7 +22,7 @@
                             "type": "UserStory",
                             "id": "U2",
                             "title": "Lorem ipsum 2",
-                            "state": "TODO"
+                            "state": "DONE"
                         }
                     ]
                 },
@@ -34,8 +34,7 @@
                         {
                             "type": "UserStory",
                             "id": "U3",
-                            "title": "Lorem ipsum 3",
-                            "state": "TODO"
+                            "title": "Lorem ipsum"
                         }
                     ]
                 }
@@ -54,20 +53,17 @@
                         {
                             "type": "UserStory",
                             "id": "U4",
-                            "title": "Lorem ipsum 4",
-                            "state": "TODO"
+                            "title": "Lorem ipsum A"
                         },
                         {
                             "type": "UserStory",
                             "id": "U5",
-                            "title": "Lorem ipsum 5",
-                            "state": "TODO"
+                            "title": "Lorem ipsum B"
                         },
                         {
                             "type": "UserStory",
                             "id": "U6",
-                            "title": "Lorem ipsum 6",
-                            "state": "TODO"
+                            "title": "Lorem ipsum C"
                         }
                     ]
                 }

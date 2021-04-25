@@ -10,6 +10,7 @@ import javafx.scene.control.SkinBase;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.Region;
 
 class CardSkin extends SkinBase<Card> {
@@ -17,7 +18,6 @@ class CardSkin extends SkinBase<Card> {
   private final Label title;
   private final Region state;
   private final Label constraint;
-  private final Label teamMember;
 
   protected CardSkin(Card control) {
     super(control);
@@ -45,15 +45,9 @@ class CardSkin extends SkinBase<Card> {
     AnchorPane.setLeftAnchor(constraint, 8.0);
     anchorPane.getChildren().add(constraint);
 
-    teamMember = new Label();
-    teamMember.getStyleClass().add("team-member");
-    AnchorPane.setBottomAnchor(teamMember, 4.0);
-    AnchorPane.setLeftAnchor(teamMember, 19.0);
-    anchorPane.getChildren().add(teamMember);
-
     registerChangeListener(control.titleProperty(), o -> updateChildren());
-    registerChangeListener(control.colorProperty(), o -> updateChildren());
-    registerChangeListener(control.stateProperty(), o -> updateChildren());
+    registerChangeListener(control.backgroundColorProperty(), o -> updateChildren());
+    registerChangeListener(control.stateColorProperty(), o -> updateChildren());
     updateChildren();
   }
 
@@ -61,24 +55,15 @@ class CardSkin extends SkinBase<Card> {
     var card = getSkinnable();
 
     title.setText(card.getTitle());
-    anchorPane.setBackground(new Background(new BackgroundFill(card.getColor(), null, null)));
+    anchorPane.setBackground(
+        new Background(new BackgroundFill(card.getBackgroundColor(), null, null)));
 
-    if (card.getState() != null || card.getTeamMember() != null) {
+    if (card.getStateColor() != null) {
       AnchorPane.setBottomAnchor(title, 16.0);
+      state.setBackground(
+          new Background(new BackgroundFill(card.getStateColor(), new CornerRadii(6), null)));
     } else {
       AnchorPane.setBottomAnchor(title, 8.0);
     }
-
-    if (card.getState() != null) {
-      switch (card.getState()) {
-        case TODO -> state.getStyleClass().add("todo");
-        case IN_PROGRESS -> state.getStyleClass().add("in-progress");
-        case DONE -> state.getStyleClass().add("done");
-        case NEXT_ITERATION -> state.getStyleClass().add("next-iteration");
-        case CONSTRAINT -> constraint.setText("Constraint");
-      }
-    }
-
-    teamMember.setText(card.getTeamMember());
   }
 }

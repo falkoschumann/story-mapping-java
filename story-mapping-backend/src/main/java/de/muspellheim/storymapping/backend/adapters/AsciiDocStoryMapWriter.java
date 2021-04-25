@@ -48,31 +48,19 @@ public class AsciiDocStoryMapWriter {
       lines.add("");
       activity.userStories().forEach(this::write);
     } else if (card instanceof UserStory userStory) {
-      String prefix = getPrefix(userStory.state());
-      String teamMember = getTeamMember(userStory.teamMember());
-      lines.add("* " + prefix + teamMember + userStory.title());
+      String prefix = getState(userStory.state());
+      lines.add("* " + prefix + userStory.title());
     } else if (card instanceof Pain pain) {
-      String prefix = getPrefix(pain.state()) + "[Pain] ";
-      String teamMember = getTeamMember(pain.teamMember());
-      lines.add("* " + prefix + teamMember + pain.title());
+      String prefix = getState(pain.state()) + "[Pain] ";
+      lines.add("* " + prefix + pain.title());
     }
   }
 
-  private String getPrefix(State state) {
-    var prefix = "";
-    if (state != null) {
-      prefix =
-          switch (state) {
-            case TODO, IN_PROGRESS -> "[ ] ";
-            case DONE -> "[x] ";
-            case CONSTRAINT -> "[Constraint] ";
-            default -> "";
-          };
-    }
-    return prefix;
-  }
-
-  private String getTeamMember(String teamMember) {
-    return teamMember != null ? "(" + teamMember + ") " : "";
+  private String getState(State state) {
+    return switch (state) {
+      case TODO -> "[ ] ";
+      case DONE -> "[x] ";
+      default -> "";
+    };
   }
 }
