@@ -7,6 +7,7 @@ package de.muspellheim.storymapping.backend.adapters;
 
 import de.muspellheim.storymapping.contract.data.Activity;
 import de.muspellheim.storymapping.contract.data.Goal;
+import de.muspellheim.storymapping.contract.data.Pain;
 import de.muspellheim.storymapping.contract.data.Project;
 import de.muspellheim.storymapping.contract.data.State;
 import de.muspellheim.storymapping.contract.data.Story;
@@ -39,9 +40,9 @@ public class JsonStoryMapReader {
       throw new IllegalStateException("Object is not a project: " + o);
     }
 
-    var title = o.getString("title");
+    var name = o.getString("name");
     var stories = readStories(o.getJsonArray("stories"));
-    return new Project(title, stories);
+    return new Project(name, stories);
   }
 
   private Goal readGoal(JsonObject o) {
@@ -58,14 +59,6 @@ public class JsonStoryMapReader {
     return new Activity(id, title, userStories);
   }
 
-  private UserStory readUserStory(JsonObject o) {
-    var id = o.getString("id");
-    var title = o.getString("title");
-    var jsonState = o.getJsonString("state");
-    var state = jsonState != null ? State.valueOf(jsonState.getString()) : State.EMPTY;
-    return new UserStory(id, title, state);
-  }
-
   private List<Story> readStories(JsonArray a) {
     var stories = new ArrayList<Story>();
     for (var v : a) {
@@ -75,6 +68,7 @@ public class JsonStoryMapReader {
             case "Goal" -> readGoal(o);
             case "Activity" -> readActivity(o);
             case "UserStory" -> readUserStory(o);
+            case "Pain" -> readPain(o);
             default -> null;
           };
       if (story != null) {
@@ -82,5 +76,21 @@ public class JsonStoryMapReader {
       }
     }
     return stories;
+  }
+
+  private UserStory readUserStory(JsonObject o) {
+    var id = o.getString("id");
+    var title = o.getString("title");
+    var jsonState = o.getJsonString("state");
+    var state = jsonState != null ? State.valueOf(jsonState.getString()) : State.EMPTY;
+    return new UserStory(id, title, state);
+  }
+
+  private Pain readPain(JsonObject o) {
+    var id = o.getString("id");
+    var title = o.getString("title");
+    var jsonState = o.getJsonString("state");
+    var state = jsonState != null ? State.valueOf(jsonState.getString()) : State.EMPTY;
+    return new Pain(id, title, state);
   }
 }

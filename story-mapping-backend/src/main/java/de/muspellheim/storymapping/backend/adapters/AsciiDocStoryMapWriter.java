@@ -31,7 +31,7 @@ public class AsciiDocStoryMapWriter {
     Files.createDirectories(file.getParent());
     lines.clear();
 
-    lines.add("= " + project.title());
+    lines.add("= " + project.name());
     lines.add(":toc:");
     project.stories().forEach(this::write);
     Files.write(file, lines, StandardCharsets.UTF_8);

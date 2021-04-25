@@ -36,7 +36,7 @@ import javafx.stage.FileChooser.ExtensionFilter;
 import javax.imageio.ImageIO;
 
 public class StoryMapView extends VBox {
-  private final Label title;
+  private final Label name;
   private final Slider zoomSlider;
   private final Button refreshButton;
   private final Button exportImageButton;
@@ -46,9 +46,9 @@ public class StoryMapView extends VBox {
   private final StoryMapViewModel viewModel;
 
   public StoryMapView(MessageHandling messageHandling) {
-    title = new Label("Story Mapping");
-    title.setFont(new Font("Verdana", 24));
-    title.setTextFill(Color.web("#2e3032"));
+    name = new Label("Story Mapping");
+    name.setFont(new Font("Verdana", 24));
+    name.setTextFill(Color.web("#2e3032"));
 
     var iconUrl =
         Objects.requireNonNull(StoryMapView.class.getResource("icons/folder-open.png"))
@@ -79,7 +79,7 @@ public class StoryMapView extends VBox {
 
     var toolBar =
         new ToolBar(
-            title, Spacer.newHSpacer(), zoomSlider, openButton, refreshButton, exportImageButton);
+            name, Spacer.newHSpacer(), zoomSlider, openButton, refreshButton, exportImageButton);
     getChildren().add(toolBar);
 
     board = new Board();
@@ -138,7 +138,7 @@ public class StoryMapView extends VBox {
     refreshButton.setDisable(false);
     exportImageButton.setDisable(false);
     var project = viewModel.getBoard();
-    title.setText(project.title());
+    name.setText(project.name());
     createAndPlaceCard(project.stories(), 0, 0);
   }
 

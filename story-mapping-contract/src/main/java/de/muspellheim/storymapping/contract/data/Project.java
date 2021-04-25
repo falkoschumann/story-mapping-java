@@ -7,4 +7,4 @@ package de.muspellheim.storymapping.contract.data;
 
 import java.util.List;
 
-public record Project(String title, List<? extends Story> stories) {}
+public record Project(String name, List<? extends Story> stories) {}

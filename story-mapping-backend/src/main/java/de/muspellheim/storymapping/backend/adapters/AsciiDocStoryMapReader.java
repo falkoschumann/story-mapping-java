@@ -22,7 +22,7 @@ import java.util.List;
 public class AsciiDocStoryMapReader {
   private final Path file;
 
-  private String boardTitle;
+  private String boardName;
   private final Deque<Goal> goals = new LinkedList<>();
 
   private int goalIndex = 1;
@@ -43,7 +43,7 @@ public class AsciiDocStoryMapReader {
     for (int i = lines.size() - 1; i >= 0; i--) {
       var line = lines.get(i);
       if (line.startsWith("= ")) {
-        boardTitle = line.substring(2);
+        boardName = line.substring(2);
       } else if (line.startsWith("== ")) {
         var title = line.substring(3);
         goals.addFirst(new Goal("G" + goalIndex++, title, List.copyOf(activities)));
@@ -65,6 +65,6 @@ public class AsciiDocStoryMapReader {
         userStories.addFirst(new UserStory("U" + userStoryIndex++, title, state));
       }
     }
-    return new Project(boardTitle, List.copyOf(goals));
+    return new Project(boardName, List.copyOf(goals));
   }
 }

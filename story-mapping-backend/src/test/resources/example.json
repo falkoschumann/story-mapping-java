@@ -1,6 +1,6 @@
 {
     "type": "Project",
-    "title": "Foobar",
+    "name": "Foobar",
     "stories": [
         {
             "type": "Goal",

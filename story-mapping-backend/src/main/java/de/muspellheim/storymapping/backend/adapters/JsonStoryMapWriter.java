@@ -7,6 +7,7 @@ package de.muspellheim.storymapping.backend.adapters;
 
 import de.muspellheim.storymapping.contract.data.Activity;
 import de.muspellheim.storymapping.contract.data.Goal;
+import de.muspellheim.storymapping.contract.data.Pain;
 import de.muspellheim.storymapping.contract.data.Project;
 import de.muspellheim.storymapping.contract.data.State;
 import de.muspellheim.storymapping.contract.data.Story;
@@ -34,7 +35,7 @@ public class JsonStoryMapWriter {
     try (var writer = factory.createWriter(Files.newBufferedWriter(file))) {
       var o = Json.createObjectBuilder();
       o.add("type", "Project");
-      o.add("title", project.title());
+      o.add("name", project.name());
       o.add("stories", writeStories(project.stories()));
       writer.writeObject(o.build());
     }
@@ -64,6 +65,15 @@ public class JsonStoryMapWriter {
         o.add("title", userStory.title());
         if (userStory.state() != State.EMPTY) {
           o.add("state", userStory.state().name());
+        }
+        a.add(o);
+      } else if (story instanceof Pain pain) {
+        var o = Json.createObjectBuilder();
+        o.add("type", "Pain");
+        o.add("id", pain.id());
+        o.add("title", pain.title());
+        if (pain.state() != State.EMPTY) {
+          o.add("state", pain.state().name());
         }
         a.add(o);
       }
