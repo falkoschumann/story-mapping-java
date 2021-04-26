@@ -62,6 +62,7 @@ public class StoryMapView extends VBox {
     zoomSlider.setSnapToTicks(true);
     zoomSlider.setMajorTickUnit(0.5);
     zoomSlider.setMinorTickCount(4);
+    zoomSlider.setBlockIncrement(0.1);
     zoomSlider.valueProperty().addListener(o -> handleZoomChanged());
 
     iconUrl =
