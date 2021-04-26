@@ -21,13 +21,13 @@ def year = LocalDate.now().year
 if (Os.isFamily(Os.FAMILY_MAC)) {
   jlink {
     jpackage {
-      //icon = 'src/main/macos/AppIcon.icns'
+      icon = 'src/main/macos/AppIcon.icns'
       imageName = 'Story Maping'
       installerType = 'dmg'
       imageOptions = [
         '--copyright', "Copyright (c) ${year} Falko Schumann",
         '--mac-sign',
-        '--mac-signing-key-user-name', project.findProperty('macSigning.keyUserName')
+        '--mac-signing-key-user-name', project.findProperty('mac.signingKeyUserName')
       ]
     }
   }
@@ -36,7 +36,7 @@ if (Os.isFamily(Os.FAMILY_MAC)) {
 if (Os.isFamily(Os.FAMILY_WINDOWS)) {
   jlink {
     jpackage {
-      //icon = 'src/main/win/app.ico'
+      icon = 'src/main/win/app.ico'
       imageName = 'Story Mapping'
       imageOptions = [
         '--copyright', "Copyright (c) ${year} Falko Schumann",
@@ -49,7 +49,7 @@ if (Os.isFamily(Os.FAMILY_WINDOWS)) {
         '--win-dir-chooser',
         '--win-menu',
         '--win-menu-group', 'Muspellheim',
-        '--win-upgrade-uuid', 'cce3747c-06dc-466c-8c49-4aebe528da61'
+        '--win-upgrade-uuid', project.findProperty('win.upgradeUuid')
       ]
     }
   }
