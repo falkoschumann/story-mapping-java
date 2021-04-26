@@ -164,6 +164,9 @@ public class StoryMapView extends VBox {
         card.setStateColor(getStateColor(userStory.state()));
         var tooltipPrefix = card.getStateName() != null ? "[" + card.getStateName() + "] " : "";
         var tooltip = new Tooltip(tooltipPrefix + card.getTitle());
+        tooltip.setWrapText(true);
+        tooltip.setMaxWidth(420);
+        tooltip.setFont(new Font("Verdana", 24));
         card.setTooltip(tooltip);
         row++;
       } else if (story instanceof Pain pain) {
@@ -173,6 +176,8 @@ public class StoryMapView extends VBox {
         var tooltipPrefix =
             card.getStateName() != null ? "[Pain, " + card.getStateName() + "] " : "[Pain] ";
         var tooltip = new Tooltip(tooltipPrefix + card.getTitle());
+        tooltip.setMaxWidth(420);
+        tooltip.setFont(new Font("Verdana", 24));
         card.setTooltip(tooltip);
         row++;
       }
