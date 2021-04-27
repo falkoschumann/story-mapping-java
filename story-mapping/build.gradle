@@ -22,7 +22,7 @@ if (Os.isFamily(Os.FAMILY_MAC)) {
   jlink {
     jpackage {
       icon = 'src/main/macos/AppIcon.icns'
-      imageName = 'Story Maping'
+      imageName = 'Story Mapping'
       installerType = 'dmg'
       imageOptions = [
         '--copyright', "Copyright (c) ${year} Falko Schumann",
